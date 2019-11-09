@@ -1,5 +1,11 @@
-DROP DATABASE IF EXISTS exampledb;
-CREATE DATABASE exampledb;
+DROP DATABASE IF EXISTS baseballdb;
+CREATE DATABASE baseballdb;
 
-DROP DATABASE IF EXISTS testdb;
-CREATE DATABASE testdb;
+USE baseballdb;
+
+Create Table Teams(
+    
+    Team VARCHAR(30) NOT NULL,
+    PLAYER VARCHAR(30) NOT NULL
+
+)
