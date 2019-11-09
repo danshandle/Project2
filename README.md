@@ -29,9 +29,11 @@ Novemberists
       
 - [x] Application
 
-     - [ ] app
+     - [ ] Record Batter stats
      
-     - [ ] app
+     - [ ] User input innings
+
+     - [ ] User select teams
 
     
 
