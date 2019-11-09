@@ -7,7 +7,7 @@ Novemberists
 
 ## MVP
 
-#### - [] Requirements
+ - [] Requirements
 
      - [ ] Express Web Server
 
@@ -27,7 +27,7 @@ Novemberists
 
      - [] Protect sensitive information
       
-#### - [x] Application
+- [x] Application
 
      - [ ] app
      
@@ -42,9 +42,11 @@ Novemberists
 - [ ] Pitcher Stats
   > requires collection of data per pitch
 - [ ] Record Doubles and Triple
+- [ ] Store matches stats
+<!-- currently hold match stats in js send stats to season stats to dynamiclly updat ERA and batting average -->
 
 
-## (#Prerequisites)
+## Prerequisites
 
    
    - [DotEnv](https://www.npmjs.com/package/dotenv)
@@ -53,7 +55,9 @@ Novemberists
    - [Express](https://www.npmjs.com/package/express)
 
   
-  - [Handlebars]()
+  - [Handlebars](https://www.npmjs.com/package/express-handlebars)
+
+  - [Express-Handlebars](https://www.npmjs.com/package/handlebars)
   
   
   - [Express-handlebars]()
