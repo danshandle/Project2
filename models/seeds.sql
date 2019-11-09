@@ -1,4 +1,4 @@
-INSERT INTO baseballdb
+INSERT INTO players
 (player_name, jersey_number, position, handness, team_id)
 VALUES 
 ("Emma", "44", "P", "RH",1),
