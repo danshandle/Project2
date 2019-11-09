@@ -1,12 +1,17 @@
-var connection = require("./config.json");
+const connection = require("connection");
 
+const orm = {
+  selectAll: (table, cb) => {
+    let query = `SELECT * FROM ${table};`;
 
-var orm = {
-    selectWhere: function(tableInput, colToSearch, valOfCol) {
-        var queryString = "SELECT * FROM ?? WHERE ?? = ?";
-        connection.query(queryString, [tableInput, colToSearch, valOfCol], function(err, result) {
-          if (err) throw err;
-          console.log(result);
-        });
-}
-}
+    if (err) {
+      throw err;
+    }
+    connection.query(query, function(err, res) {
+      cb(res);
+      console.log(res);
+    });
+  }
+};
+
+module.exports = orm;
