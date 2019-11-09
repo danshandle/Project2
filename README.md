@@ -39,8 +39,7 @@ Novemberists
 
 ## Developmental features
 - [ ] User enabled features
-- [ ] Pitcher Stats
-  > requires collection of data per pitch
+- [ ] Pitcher Stats: requires collection of data per pitch
 - [ ] Record Doubles and Triple
 - [ ] Store matches stats
 <!-- currently hold match stats in js send stats to season stats to dynamiclly updat ERA and batting average -->
