@@ -16,32 +16,35 @@
                   <th scope="col">7th</th>
                   <th scope="col">8th</th>
                   <th scope="col">9th</th>
+                  <th scope="col">Total</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>visTeam</td>
-                  <td><form><input type="number" name="visScore1st"></form></td>
-                  <td><form><input type="number" name="visScore2nd"></form></td>
-                  <td><form><input type="number" name="viscore3rd"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
+                  <td><form><input type="number" id="visScore1st"></form></td>
+                  <td><form><input type="number" id="visScore2nd"></form></td>
+                  <td><form><input type="number" id="viscore3rd"></form></td>
+                  <td><form><input type="number" id="viscore4th"></form></td>
+                  <td><form><input type="number" id="viscore5th"></form></td>
+                  <td><form><input type="number" id="viscore6th"></form></td>
+                  <td><form><input type="number" id="viscore7th"></form></td>
+                  <td><form><input type="number" id="viscore8th"></form></td>
+                  <td><form><input type="number" id="viscore9th"></form></td>
+                  <td><input type="text" id="sum"><br>
+    <input type="button" value="Sum" onclick="calcSum()"></td>
                 </tr>
                 <tr>
                   <td>homeTeam</td>
-                  <td><form><input type="number" name="visScore1st"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
+                  <td><form><input type="number" id="homeScore1st"></form></td>
+                  <td><form><input type="number" id="homeScore2nd"></form></td>
+                  <td><form><input type="number" id="homeScore3rd"></form></td>
+                  <td><form><input type="number" id="homeScore4th"></form></td>
+                  <td><form><input type="number" id="homeScore5th"></form></td>
+                  <td><form><input type="number" id="homeScore6th"></form></td>
+                  <td><form><input type="number" id="homeScore7th"></form></td>
+                  <td><form><input type="number" id="homeScore8th"></form></td>
+                  <td><form><input type="number" id="homeScore9th"></form></td>
               </tbody>
             </table>
           </div>
@@ -50,34 +53,11 @@
 <div id="diamond">
   <div class="container">
     <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
-      </div>
     </div>
   </div>
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
+
 

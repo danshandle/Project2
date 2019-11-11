@@ -2,5 +2,10 @@
   line-height: 2.5;
 }
 input[type=number]{
+  font-family: 'digital-clock-font';
   width: 40px;
 } 
+@font-face{
+  font-family:'digital-clock-font';
+  src: url('\public\fonts\digital-7\digital-7.ttf');
+ }
