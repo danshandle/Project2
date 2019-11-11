@@ -1,7 +1,7 @@
 <div class="container">
         <div class="card" style="width: 60rem;">
             <div class="card-header">
-              {{!-- <img class="center" src=https://i.imgur.com/PVEmUZN.gif height="50" width="600" alt="and beer" /> Welcome to the Ballpark!  --}}
+              <img class="center" src=https://i.imgur.com/PVEmUZN.gif height="50" width="600" alt="and beer" /> Welcome to the Ballpark!
             </div>
             <table class="card-table table">
               <thead>
@@ -22,33 +22,53 @@
               <tbody>
                 <tr>
                   <td>visTeam</td>
-                  <td><form><input type="number" id="visScore1st"></form></td>
-                  <td><form><input type="number" id="visScore2nd"></form></td>
-                  <td><form><input type="number" id="viscore3rd"></form></td>
-                  <td><form><input type="number" id="viscore4th"></form></td>
-                  <td><form><input type="number" id="viscore5th"></form></td>
-                  <td><form><input type="number" id="viscore6th"></form></td>
-                  <td><form><input type="number" id="viscore7th"></form></td>
-                  <td><form><input type="number" id="viscore8th"></form></td>
-                  <td><form><input type="number" id="viscore9th"></form></td>
-                  <td><input type="text" id="sum"><br>
-    <input type="button" value="Sum" onclick="calcSum()"></td>
+                  <td><form><input type="number" class="visScore" id="visScore1st"></form></td>
+                  <td><form><input type="number" class="visScore" id="visScore2nd"></form></td>
+                  <td><form><input type="number" class="visScore" id="viscore3rd"></form></td>
+                  <td><form><input type="number" class="visScore" id="viscore4th"></form></td>
+                  <td><form><input type="number" class="visScore" id="viscore5th"></form></td>
+                  <td><form><input type="number" class="visScore" id="viscore6th"></form></td>
+                  <td><form><input type="number" class="visScore" id="viscore7th"></form></td>
+                  <td><form><input type="number" class="visScore" id="viscore8th"></form></td>
+                  <td><form><input type="number" class="visScore" id="viscore9th"></form></td>
+                  <td><h3 id="resultVis"></h3></td>
                 </tr>
                 <tr>
                   <td>homeTeam</td>
-                  <td><form><input type="number" id="homeScore1st"></form></td>
-                  <td><form><input type="number" id="homeScore2nd"></form></td>
-                  <td><form><input type="number" id="homeScore3rd"></form></td>
-                  <td><form><input type="number" id="homeScore4th"></form></td>
-                  <td><form><input type="number" id="homeScore5th"></form></td>
-                  <td><form><input type="number" id="homeScore6th"></form></td>
-                  <td><form><input type="number" id="homeScore7th"></form></td>
-                  <td><form><input type="number" id="homeScore8th"></form></td>
-                  <td><form><input type="number" id="homeScore9th"></form></td>
+                  <td><form><input type="number" class="homeScore" id="homeScore1st"></form></td>
+                  <td><form><input type="number" class="homeScore" id="homeScore2nd"></form></td>
+                  <td><form><input type="number" class="homeScore" id="homeScore3rd"></form></td>
+                  <td><form><input type="number" class="homeScore" id="homeScore4th"></form></td>
+                  <td><form><input type="number" class="homeScore" id="homeScore5th"></form></td>
+                  <td><form><input type="number" class="homeScore" id="homeScore6th"></form></td>
+                  <td><form><input type="number" class="homeScore" id="homeScore7th"></form></td>
+                  <td><form><input type="number" class="homeScore" id="homeScore8th"></form></td>
+                  <td><form><input type="number" class="homeScore" id="homeScore9th"></form></td>
+                  <td><h3 id="resultHome"></h3></td>
               </tbody>
             </table>
           </div>
          </div>
+
+{{!-- Sum up the scores on the scoreboard --}}
+
+<script>
+  var visTotalSum = 0;
+   $('.visScore').on('change', function(){
+     var currentValue = parseInt($(this).val())
+     visTotalSum += currentValue
+    $('#resultVis').text(visTotalSum);
+   });
+
+   var homeTotalSum = 0;
+   $('.homeScore').on('change', function(){
+     var currentValue = parseInt($(this).val())
+     homeTotalSum += currentValue
+    $('#resultHome').text(homeTotalSum);
+   });
+
+</script>
+
 
 <div id="diamond">
   <div class="container">
