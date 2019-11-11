@@ -4,8 +4,6 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
 
-var db = require("./models");
-
 var app = express();
 var PORT = process.env.PORT || 3000;
 
@@ -23,12 +21,6 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
-
-
-// Routes
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
-
 var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
@@ -38,14 +30,17 @@ if (process.env.NODE_ENV === "test") {
 }
 
 // Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function() {
-  app.listen(PORT, function() {
-    console.log(
-      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-      PORT,
-      PORT
-    );
-  });
+
+var routes = require("./controller/baseball_controller.js");
+
+app.use(routes);
+
+app.listen(PORT, function() {
+  console.log(
+    "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+    PORT,
+    PORT
+  );
 });
 
 module.exports = app;
