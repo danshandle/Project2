@@ -4,17 +4,17 @@ CREATE DATABASE baseballdb;
 USE baseballdb;
 
 CREATE TABLE `players` (
-  `player_id` int,
+  `player_id` int NOT NULL AUTO_INCREMENT,
   `player_name` varchar(50),
   `jersey_number` varchar(2),
   `position` varchar(3),
-  `handness_bat` varchar(5),
+  `handness` varchar(5),
   `team_id` int,
   PRIMARY KEY (`player_id`),
   KEY `FK` (`position`, `team_id`)
 );
 CREATE TABLE `teams` (
-  `team_id` int,
+  `team_id` int NOT NULL AUTO_INCREMENT,
   `team_name` varchar(50),
   PRIMARY KEY (`team_id`)
 );
@@ -25,7 +25,7 @@ CREATE TABLE `season_bat_stats` (
   KEY `FK` (`player_id`)
 );
 CREATE TABLE `matches` (
-  `match_id` int,
+  `match_id` int NOT NULL AUTO_INCREMENT,
   `home` int,
   `away` int,
   `location` varchar(50),
@@ -35,7 +35,7 @@ CREATE TABLE `matches` (
   KEY `FK` (`home`, `away`)
 );
 CREATE TABLE `at_bats` (
-  `at_bats_id` int,
+  `at_bats_id` int NOT NULL AUTO_INCREMENT,
   `match_id` int,
   `batter_id` int,
   `hit` char(1),
