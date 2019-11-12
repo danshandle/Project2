@@ -1,4 +1,4 @@
-const connection = require("connection");
+const connection = require("./connection");
 
 const orm = {
   selectAll: (table, cb) => {
@@ -10,7 +10,7 @@ const orm = {
       }
 
       cb(res);
-      console.log(res);
+      
     });
   }
 };
