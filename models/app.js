@@ -2,16 +2,20 @@
 const orm = require("../config/orm.js");
 
 const baseball = {
-  allTeams: function(cb) {
+  allTeams: cb => {
     orm.selectAll("teams", function(res) {
       cb(res);
     });
   },
-  allplayers: function(cb) {
+  allplayers: cb => {
     orm.selectAll("players", function(res) {
+      console.log(res)
       cb(res);
     });
   }
 };
 
 module.exports = baseball;
+
+
+
