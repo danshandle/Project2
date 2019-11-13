@@ -55,59 +55,21 @@
           {{> teams/homeTeam}}
       {{/each}}
     </ul>
-    <ul>
-      {{#each homePlayers}}
-          <li>{{player_name}}</li>
-      {{/each}}
-
-    </ul>
+    <div id="home-roster"></div>
     
-    <table class="table">
-      <thead>
-        <tr>
-          {{!-- join players and stats table calculate batteraverger give alas  --}}
-          <th scope="col">Roster</th> 
-          <th scope="col">Name</th>
-          <th scope="col">Position</th>
-          <th scope="col">Hand</th>
-          <th scope="col">Avg</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{> rosters/home-roster}}
-      </tbody>
-    </table>
+    
   </div>
   
-  <div class="col-md-4" id="away-team">
+  <div class="col-md-4">
     <h1>Away Team</h1>
     <ul >
       {{#each teams}}
           {{> teams/awayTeam}}
       {{/each}}
     </ul>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Roster</th>
-          <th scope="col">Name</th>
-          <th scope="col">Position</th>
-          <th scope="col">Hand</th>
-          <th scope="col">Avg</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each homePlayers}}
-          <tr>
-            <th scope="row">{{jersey_number}}</th>
-            <td>{{player_name}}</td>
-            <td>{{position}}</td>
-            <td>{{handnes}}</td>
-            <td>batting_avg</td>
-          </tr>
-        {{/each}}
-      </tbody>
-    </table>
+    <div id="away-roster"></div>
+
+    
   </div>
 </div>
 
