@@ -7,15 +7,12 @@ const baseball = {
       cb(res);
     });
   },
-  allplayers: cb => {
-    orm.selectAll("players", function(res) {
-      console.log(res)
+  allplayers: (team_id, cb) => {
+    orm.selectOne("players", team_id, function(res) {
+      // console.log(res);
       cb(res);
     });
   }
 };
 
 module.exports = baseball;
-
-
-
