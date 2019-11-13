@@ -43,6 +43,7 @@ README2-POF
 
 ## Developmental features
 - [ ] User enabled features
+- [ ] User authization
 - [ ] Pitcher Stats: requires collection of data per pitch
 - [ ] Record Doubles and Triple
 - [ ] Store matches stats
