@@ -19,9 +19,10 @@ router.route("/api/home/team/:id").get(function(req, res) {
     let playersObj = {
       homePlayers: data
     };
-    console.log(playersObj.homePlayers);
-   
-    res.send(playersObj);
+
+
+    res.json(playersObj.homePlayers);
+
   });
 });
 
@@ -32,7 +33,8 @@ router.route("/api/away/team/:id").get(function(req, res) {
       awayPlayers: data
     };
 
-    res.render("index", playersObj);
+    res.json(playersObj.awayPlayers);
+
   });
 });
 

@@ -1,6 +1,5 @@
 DROP DATABASE IF EXISTS baseballdb;
 CREATE DATABASE baseballdb;
-
 USE baseballdb;
 
 CREATE TABLE `players` (

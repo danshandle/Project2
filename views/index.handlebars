@@ -1,9 +1,9 @@
 <div class="container">
-        <div class="card" style="width: 60rem;">
-            <div class="card-header">
-              {{!-- <img class="center" src=https://i.imgur.com/PVEmUZN.gif height="50" width="600" alt="and beer" /> Welcome to the Ballpark!  --}}
+        <div class="card" style="width: 50rem;">
+            <div class="card-header" id="sbheader">
+              <img class="center" src=https://i.imgur.com/PVEmUZN.gif height="50" width="600" alt="and beer" /> HEB: #1 in TX!
             </div>
-            <table class="card-table table">
+            <table class="card-table table" id="scoreboard">
               <thead>
                 <tr>
                   <th scope="col">Team</th>
@@ -16,101 +16,114 @@
                   <th scope="col">7th</th>
                   <th scope="col">8th</th>
                   <th scope="col">9th</th>
+                  <th scope="col">Total</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>visTeam</td>
-                  <td><form><input type="number" name="visScore1st"></form></td>
-                  <td><form><input type="number" name="visScore2nd"></form></td>
-                  <td><form><input type="number" name="viscore3rd"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
+                  <td id={{visTeam}}></td>
+                  <td><form><input type="number" class="visScore" id="visScore1st"></form></td>
+                  <td><form><input type="number" class="visScore" id="visScore2nd"></form></td>
+                  <td><form><input type="number" class="visScore" id="viscore3rd"></form></td>
+                  <td><form><input type="number" class="visScore" id="viscore4th"></form></td>
+                  <td><form><input type="number" class="visScore" id="viscore5th"></form></td>
+                  <td><form><input type="number" class="visScore" id="viscore6th"></form></td>
+                  <td><form><input type="number" class="visScore" id="viscore7th"></form></td>
+                  <td><form><input type="number" class="visScore" id="viscore8th"></form></td>
+                  <td><form><input type="number" class="visScore" id="viscore9th"></form></td>
+                  <td><h3 id="resultVis"></h3></td>
                 </tr>
                 <tr>
                   <td>homeTeam</td>
-                  <td><form><input type="number" name="visScore1st"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
-                  <td><form><input type="number" name="runs1st"></form></td>
+                  <td><form><input type="number" class="homeScore" id="homeScore1st"></form></td>
+                  <td><form><input type="number" class="homeScore" id="homeScore2nd"></form></td>
+                  <td><form><input type="number" class="homeScore" id="homeScore3rd"></form></td>
+                  <td><form><input type="number" class="homeScore" id="homeScore4th"></form></td>
+                  <td><form><input type="number" class="homeScore" id="homeScore5th"></form></td>
+                  <td><form><input type="number" class="homeScore" id="homeScore6th"></form></td>
+                  <td><form><input type="number" class="homeScore" id="homeScore7th"></form></td>
+                  <td><form><input type="number" class="homeScore" id="homeScore8th"></form></td>
+                  <td><form><input type="number" class="homeScore" id="homeScore9th"></form></td>
+                  <td><h3 id="resultHome"></h3></td>
               </tbody>
             </table>
           </div>
          </div>
 
+
+{{!-- Sum up the scores on the scoreboard --}}
+
+<script>
+  var visTotalSum = 0;
+   $('.visScore').on('change', function(){
+     var currentValue = parseInt($(this).val())
+     visTotalSum += currentValue
+    $('#resultVis').text(visTotalSum);
+   });
+
+   var homeTotalSum = 0;
+   $('.homeScore').on('change', function(){
+     var currentValue = parseInt($(this).val())
+     homeTotalSum += currentValue
+    $('#resultHome').text(homeTotalSum);
+   });
+
+
+</script>
+
+
+<div id="diamond">
+  <div class="container">
+    <div class="row">
+    </div>
+
 <div class="row">
-  <div class="col-md-4 offset-md-2">
+  <div class="col-md-3 offset-md-1">
     <h1>Home Team</h1>
     <ul id="home-team">
       {{#each teams}}
           {{> teams/homeTeam}}
       {{/each}}
     </ul>
-    <ul>
-      {{#each homePlayers}}
-          <li>{{player_name}}</li>
-      {{/each}}
 
-    </ul>
-    
-    <table class="table">
-      <thead>
-        <tr>
-          {{!-- join players and stats table calculate batteraverger give alas  --}}
-          <th scope="col">Roster</th> 
-          <th scope="col">Name</th>
-          <th scope="col">Position</th>
-          <th scope="col">Hand</th>
-          <th scope="col">Avg</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{> rosters/home-roster}}
-      </tbody>
-    </table>
+    <div id="home-roster"></div>
+
   </div>
   
-  <div class="col-md-4" id="away-team">
+  <div class="col-md-3 offset-md-5">
+
     <h1>Away Team</h1>
     <ul >
       {{#each teams}}
           {{> teams/awayTeam}}
       {{/each}}
     </ul>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Roster</th>
-          <th scope="col">Name</th>
-          <th scope="col">Position</th>
-          <th scope="col">Hand</th>
-          <th scope="col">Avg</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each homePlayers}}
-          <tr>
-            <th scope="row">{{jersey_number}}</th>
-            <td>{{player_name}}</td>
-            <td>{{position}}</td>
-            <td>{{handnes}}</td>
-            <td>batting_avg</td>
-          </tr>
-        {{/each}}
-      </tbody>
-    </table>
+
+    <div id="away-roster"></div>
+
   </div>
+
+
+<div class="col-md-4 offset-md-4" id = "batterbox">
+    <h1>Batter</h1>
 </div>
+
+<div class='container'>
+        <div class='row'>
+            <div class='col-md-12'>
+                <button type="button" id="advance">Advance Bases</button>
+                <div id="diamond"></div>
+            </div>
+        </div>
+    </div>
+
+<button class="player" id ="30">player30</button>
+<button class="player" id ="20">player20</button>
+
+ <a href="#" class="btn btn-primary" id="hitbutton">HIT!</a>
+      <a href="#" class="btn btn-primary" id="outbutton">OUT</a>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
+
 
