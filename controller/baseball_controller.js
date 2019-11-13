@@ -14,17 +14,20 @@ router.route("/").get(function(req, res) {
 });
 
 router.route("/api/home/team/:id").get(function(req, res) {
-  baseball.allplayers(function(data) {
+  let team_id = req.params.id;
+  baseball.allplayers(team_id, function(data) {
     let playersObj = {
       homePlayers: data
     };
-
-    res.render("index", playersObj);
+    console.log(playersObj.homePlayers);
+   
+    res.send(playersObj);
   });
 });
 
 router.route("/api/away/team/:id").get(function(req, res) {
-  baseball.allplayers(function(data) {
+  let team_id = req.params.id;
+  baseball.allplayers(team_id, function(data) {
     let playersObj = {
       awayPlayers: data
     };
