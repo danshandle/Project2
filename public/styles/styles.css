@@ -1,6 +1,34 @@
+body { /*This CSS entry needs to be present in order to get background picture on initial page load*/
+  background: url(../images/diamondEmpty.jpg) top center no-repeat;
+}
+
 .list-group-item {
   line-height: 2.5;
 }
 input[type=number]{
-  width: 40px;
+
+  font-family: 'digital-clock-font';
+  width: 25px;
+ 
 } 
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+#scoreboard {
+  line-height: 15px;
+  background-color: rgb(51, 53, 56);
+  color: white;
+ }
+
+ #sbheader{
+  background-image: linear-gradient(to right, blue , red);
+   color: white;
+   font-size: 16pt;
+   font-weight: bolder;
+ }

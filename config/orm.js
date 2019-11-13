@@ -23,7 +23,17 @@ const orm = {
 
       cb(res);
     });
+  },
+  selectWhere: (table, condition, cb) => {
+    let query = `SELECT * FROM ${table} Where player_id = ${condition};`;
+    connection.query(query, function(err, res) {
+      if (err) {
+        throw err;
+      }
+      cb(res);
+    })
   }
+  
 };
 
 module.exports = orm;
