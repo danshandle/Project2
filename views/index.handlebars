@@ -55,6 +55,13 @@
           {{> teams/homeTeam}}
       {{/each}}
     </ul>
+    <ul>
+      {{#each homePlayers}}
+          <li>{{player_name}}</li>
+      {{/each}}
+
+    </ul>
+    
     <table class="table">
       <thead>
         <tr>
@@ -67,10 +74,7 @@
         </tr>
       </thead>
       <tbody>
-        {{#each homePlayers}}
-          {{> rosters/home-roster}}
-        {{/each}}
-        
+        {{> rosters/home-roster}}
       </tbody>
     </table>
   </div>
@@ -79,7 +83,7 @@
     <h1>Away Team</h1>
     <ul >
       {{#each teams}}
-          {{> teams/homeTeam}}
+          {{> teams/awayTeam}}
       {{/each}}
     </ul>
     <table class="table">
@@ -94,7 +98,13 @@
       </thead>
       <tbody>
         {{#each homePlayers}}
-          {{> rosters/home-roster}}
+          <tr>
+            <th scope="row">{{jersey_number}}</th>
+            <td>{{player_name}}</td>
+            <td>{{position}}</td>
+            <td>{{handnes}}</td>
+            <td>batting_avg</td>
+          </tr>
         {{/each}}
       </tbody>
     </table>
