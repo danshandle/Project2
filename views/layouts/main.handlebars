@@ -14,4 +14,41 @@
  {{{body}}}
 </body>
 
+<script>
+  $(document).ready(() => {
+
+     $('.home-team-btn').on('click', function() {
+          let 
+            id = $(this).data('id')
+        
+          $.ajax(`api/home/team/${id}`, {
+            type: 'GET'
+           
+          }).then(
+            function(response) {              
+            }
+          );
+        });
+
+     $('.away-team-btn').on('click', function() {
+          let 
+            id = $(this).data('id')
+            console.log(`clicked  ${id}`)
+            
+          $.ajax(`/api/away/team/${id}`, {
+            type: 'GET'
+            
+          }).then(
+            function(response) {
+
+              console.log(response)
+              
+            }
+          );
+        });
+  })
+
+
+</script>
+
 </html>
