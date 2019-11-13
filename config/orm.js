@@ -10,7 +10,18 @@ const orm = {
       }
 
       cb(res);
-      
+    });
+  },
+
+  selectOne: (table, team_id, cb) => {
+    let query = `SELECT * From ${table} WHERE team_id = '${team_id}'`;
+
+    connection.query(query, function(err, res) {
+      if (err) {
+        throw err;
+      }
+
+      cb(res);
     });
   }
 };
