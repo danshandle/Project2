@@ -1,7 +1,12 @@
+body { /*This CSS entry needs to be present in order to get background picture on initial page load*/
+  background: url(./diamondEmpty.jpg) top center no-repeat;
+}
+
 .list-group-item {
   line-height: 2.5;
 }
 input[type=number]{
+
   font-family: 'digital-clock-font';
   width: 25px;
  
@@ -18,3 +23,7 @@ input[type=number]::-webkit-outer-spin-button {
   font-family:'digital-clock-font';
   src: url('\public\fonts\digital-7\digital-7.ttf');
  }
+
+  width: 40px;
+} 
+

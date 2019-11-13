@@ -41,3 +41,12 @@ VALUES
 ("Derek", "80", "RF", "RH",4),
 ("Alex", "09", "CF", "RH",4),
 ("Kelsey", "24", "DH", "SH",4);
+
+
+INSERT INTO teams
+(team_name)
+VALUES 
+("The Punks"),
+("One Too Many"),
+("Breezway Bandits"),
+("Austin Runners");
