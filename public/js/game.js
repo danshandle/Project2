@@ -1,20 +1,20 @@
-function game(homeTeam, awayTeam, loc, date, startMatch) {
-  /*Post to matches in baseballdb  */
-  $.ajax("/api/match/", {
-      type: "PUT",
-      data: 
+// function game(homeTeam, awayTeam, loc, date, startMatch) {
+//   /*Post to matches in baseballdb  */
+//   $.ajax("/api/match/", {
+//       type: "PUT",
+//       data: 
       
-    }).then(
-      function() {
-        console.log("Match set");
+//     }).then(
+//       function() {
+//         console.log("Match set");
         
-        location.reload();
-      }
-    );
+//         location.reload();
+//       }
+//     );
 
-  startMatch(homeTeam, awayTeam);
-};
+//   startMatch(homeTeam, awayTeam);
+// };
 
-function startMatch(homeTeam, awayTeam){
+// function startMatch(homeTeam, awayTeam){
 
-}
+// }
