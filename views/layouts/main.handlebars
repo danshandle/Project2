@@ -47,7 +47,7 @@
                 <td>${row.position}</td>
                 <td>${row.handness}</td>
                 <td>${row.bat_avg}</td>
-                <td><button class="player-at-bat-btn" id="ht-player-${row.player_id}"
+                <td><button class="player-at-bat-btn" id="ht-player-${row.player_id}" disable="false"
                   data-name="${row.player_name}"
                   data-pos="${row.position}"
                   data-ros="${row.jersey_number}"
@@ -94,7 +94,7 @@
         function (data) {
           data.reduce(function (table, row) {
             $(`<tr>
-                <td><button class="player-at-bat-btn" id="ht-player-${row.player_id}"
+                <td><button class="player-at-bat-btn" id="ht-player-${row.player_id} disable="false"
                   data-name="${row.player_name}"
                   data-pos="${row.position}"
                   data-ros="${row.jersey_number}"
@@ -129,15 +129,25 @@
       );
     });
 
-    $(document).on('click', '.player-at-bat-btn', function() {
-      let dataSet = $(this)[0].dataset;
-      $('#batter-card').show();
-      $('#batter-card-name').text(dataSet['name']);
-      $('#batter-card-bat_avg').text(dataSet['bat_avg']);
-      $('#batter-card-roster').text(dataSet['ros']);
-      $('#batter-card-pos').text(`Position: ${dataSet['pos']}`);
-      $('#batter-card-hand').text(`Bats: ${dataSet['hand']}`);
-      $('#batter-card').attr('data-player_id',`${dataSet['player_id']}`);
+    $(document).on('click', '.player-at-bat-btn', function(e) {
+      let isAtBat =  e.target.getAttribute('disable');
+      console.log(isAtBat)
+     if (isAtBat === 'false'){
+        let dataSet = $(this)[0].dataset;
+        $('#batter-card').show();
+        $('#batter-card-name').text(dataSet['name']);
+        $('#batter-card-bat_avg').text(dataSet['bat_avg']);
+        $('#batter-card-roster').text(dataSet['ros']);
+        $('#batter-card-pos').text(`Position: ${dataSet['pos']}`);
+        $('#batter-card-hand').text(`Bats: ${dataSet['hand']}`);
+        $('#batter-card').attr('data-player_id',`${dataSet['player_id']}`);
+        $(this)
+          .attr('disable', true)
+          .css("color", "white");
+      
+     }
+      //e.currentTarget.attributes['disable'] = true;
+      
     })
 
     $('#hit-btn').on('click', function(){ 
@@ -148,7 +158,8 @@
 
       // avdance base
 
-      // update base
+      // update database
+
     });
      
 
@@ -161,7 +172,6 @@
       //out game logic
 
       //update data base
-
 
     });
   })
