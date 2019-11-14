@@ -28,19 +28,16 @@
 <script>
   $(document).ready(() => {
 
-
     $(document).on('click', '.home-team-btn', function () {
       $('#home-roster').empty();
-      let
-        id = $(this).data('id')
+      let id = $(this).data('id')
 
       $.ajax(`/api/home/team/${id}`, {
         type: 'GET'
 
       }).then(
          function(data) {
-
-
+         
            data.reduce(function(table, row){
              $(`<tr>
                 <th scope="row" class="player" id="${row.player_id}">${row.jersey_number}</th>
@@ -48,9 +45,8 @@
                 <td>${row.position}</td>
                 <td>${row.handness}</td>
                 <td>${row.bat_avg}</td>
-                <td><button class="player" id ="${row.player_id}">Bat</button></td>
-              </tr>`).appendTo(table);
-
+                <td><button id ="${row.player_id}" class = "player">bat</td>   
+                </tr>`).appendTo(table);
               return table;
 
            }, $(`<table class="table">
@@ -81,7 +77,6 @@
       }).then(
          function(data) {
 
-
            data.reduce(function(table, row){
              $(`<tr>
                 <th scope="row">${row.jersey_number}</th>
@@ -108,13 +103,8 @@
         }
       );
     });
-
   })
 
-
 </script>
-
-
-
 </html>
 

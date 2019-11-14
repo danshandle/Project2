@@ -13,7 +13,6 @@ let ids = []
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  
   getBatter: function(id) {
     return $.ajax({
       url: "batter/" + id,
@@ -60,27 +59,4 @@ $(".player").on("click", function() {
     $("#batterbox").append(data)   
   });
 });
-
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
-var handleFormSubmit = function (event) {
-  event.preventDefault();
-
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
-  };
-
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
-
-  API.saveExample(example).then(function () {
-    refreshExamples();
-  });
-
-  $exampleText.val("");
-  $exampleDescription.val("");
-};
 
