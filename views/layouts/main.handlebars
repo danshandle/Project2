@@ -33,6 +33,8 @@
       $('#home-roster').empty();
       let
         id = $(this).data('id')
+        $(`.${id}`).hide();
+     $("#home-team").hide();
 
       $.ajax(`/api/home/team/${id}`, {
         type: 'GET'
@@ -48,7 +50,6 @@
                 <td>${row.position}</td>
                 <td>${row.handness}</td>
                 <td>${row.bat_avg}</td>
-                <td><button id ="${row.player_id}" class = "player">bat</td>
                   
                 </tr>`).appendTo(table);
 
@@ -75,6 +76,8 @@
       let
         id = $(this).data('id')
       console.log(`clicked  ${id}`)
+      $(`.${id}`).hide();
+     $("#away-team").hide();
 
       $.ajax(`/api/away/team/${id}`, {
         type: 'GET'
