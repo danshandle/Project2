@@ -1,6 +1,8 @@
-import { ENGINE_METHOD_PKEY_ASN1_METHS } from "constants";
 
-function match(homeTeam, awayTeam, location, startInning) {
+
+
+function match(homeTeam, awayTeam, location, startMatch) {
+
   /*Post to matches in baseballdb  */
   let 
     home_team_id = 1,
@@ -22,6 +24,7 @@ function startInning(){
     homeScoreInning = 0;
 
     batterbox.hide();
+
 
 
     atBatsTop();
@@ -73,3 +76,8 @@ function atBatsTop(){ //promises?
 function atBatsBotton() {
     console.log("home Team turn")
 }
+
+$(document).on("click", '#start-match',function(){
+    console.log("game started")
+    startInning()
+})
