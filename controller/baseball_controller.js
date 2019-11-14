@@ -41,15 +41,16 @@ router.route("/api/away/team/:id").get(function(req, res) {
 
 
 
-// router.route("/batter/hits/:id").get(function(req, res) {
-//   baseball.selectHits(req.params.id, function(data) {
-//     console.log(data)
-//   })
-// })
+ router.route("/batter/hits/:id").post(function(req, res) {
+   baseball.selectHits(req.params.id, function(data) {
+     console.log(data)
+   })
+ })
 
-// router.route("/batter/outs/:id").get(function(req, res) {
-//   baseball.selectOuts(req.params.id, function(data) {
-//     console.log(data)
-//   })
-// })
+ router.route("/batter/outs/:id").post(function(req, res) {
+   baseball.selectOuts(req.params.id, function(data) {
+     console.log(data)
+   })
+ })
+
 module.exports = router;
