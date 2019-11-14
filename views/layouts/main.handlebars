@@ -24,10 +24,14 @@
 </body>
 
 
-<script src="/js/game.js"></script>
- e6bafe3ccac064d727d87c3bff4fde06a620c3a4
+
+
 <script>
   $(document).ready(() => {
+
+    let 
+      home_team_id,
+      away_team_id;
 
     const backgrounds = new Array( //array of background images
     "url(../images/diamondEmpty.jpg)",
@@ -45,7 +49,8 @@ $('#batter-card').hide();
 
     $('.home-team-btn').on('click', function () {
       $('#home-roster').empty();
-      let id = $(this).data('id');
+      let id = $(this).data('home-id');
+      home_team_id = id;
       $(`.${id}`).hide();
       $("#home-team").hide();
 
@@ -99,7 +104,8 @@ $('#batter-card').hide();
     $('.away-team-btn').on('click', function () {
       $('#away-roster').empty();
       let
-        id = $(this).data('id')
+        id = $(this).data('away-id');
+      away_team_id = id;
 
       $(`.${id}`).hide();
       $('#away-team').hide();
@@ -171,7 +177,7 @@ $('#batter-card').hide();
 
     })
 
-    $('#hit-btn').on('click', function(){ 
+    $('.hit-btn').on('click', function(){ 
       current++;
       mainPage.css("background-image", backgrounds[current]);
       let player_id = $(this).parent()[0].dataset['player_id'];
@@ -196,7 +202,7 @@ $('#batter-card').hide();
     });
      
 
-    $('#out-btn').on('click', function(){ 
+    $('.out-btn').on('click', function(){ 
       let player_id = $(this).parent()[0].dataset['player_id'];
       $('#batter-card').hide();
       console.log('out');
@@ -217,11 +223,19 @@ $('#batter-card').hide();
 
 
     });
-  })
-</script>
 
-{{!-- Sum up the scores on the scoreboard --}}
-<script>
+   
+    
+    
+    $(document).on("click", '#start-match',function(){
+    console.log("game started");
+    match(home_team_id, away_team_id);
+})
+  })
+
+
+  //Sum up the scores on the scoreboard
+
   var visTotalSum = 0;
   $('.visScore').on('change', function () {
     var currentValue = parseInt($(this).val())
@@ -235,6 +249,7 @@ $('#batter-card').hide();
     homeTotalSum += currentValue
     $('#resultHome').text(homeTotalSum);
   });
+
 </script>
 
 
