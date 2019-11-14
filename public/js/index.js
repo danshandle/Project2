@@ -13,28 +13,7 @@ let ids = []
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveExample: function (example) {
-    return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
-      type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
-    });
-  },
-  getExamples: function () {
-    return $.ajax({
-      url: "api/examples",
-      type: "GET"
-    });
-  },
-  deleteExample: function (id) {
-    return $.ajax({
-      url: "api/examples/" + id,
-      type: "DELETE"
-    });
-  },
+  
   getBatter: function(id) {
     return $.ajax({
       url: "batter/" + id,
