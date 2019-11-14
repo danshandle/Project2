@@ -140,12 +140,29 @@
     })
 
     $('#hit-btn').on('click', function(){ 
+      let player_id = $(this).parent()[0].dataset['player_id'];
+      $('#batter-card').hide();
       console.log('hit');
-      console.log($(this).parent())
-    })
+      console.log(player_id);
+
+      // avdance base
+
+      // update base
+    });
      
 
-    $('#out-btn').on('click', function(){ console.log('out')});
+    $('#out-btn').on('click', function(){ 
+      let player_id = $(this).parent()[0].dataset['player_id'];
+      $('#batter-card').hide();
+      console.log('out');
+      console.log(player_id);
+
+      //out game logic
+
+      //update data base
+
+
+    });
   })
 </script>
 
