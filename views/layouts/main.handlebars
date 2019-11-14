@@ -47,7 +47,9 @@
                 <td>${row.position}</td>
                 <td>${row.handness}</td>
                 <td>${row.bat_avg}</td>
+
                 <td><button class="player-at-bat-btn" id="ht-player-${row.player_id}" disable="false"
+
                   data-name="${row.player_name}"
                   data-pos="${row.position}"
                   data-ros="${row.jersey_number}"
@@ -94,7 +96,9 @@
         function (data) {
           data.reduce(function (table, row) {
             $(`<tr>
+
                 <td><button class="player-at-bat-btn" id="ht-player-${row.player_id} disable="false"
+
                   data-name="${row.player_name}"
                   data-pos="${row.position}"
                   data-ros="${row.jersey_number}"
@@ -129,6 +133,7 @@
       );
     });
 
+
     $(document).on('click', '.player-at-bat-btn', function(e) {
       let isAtBat =  e.target.getAttribute('disable');
       console.log(isAtBat)
@@ -148,6 +153,7 @@
      }
       //e.currentTarget.attributes['disable'] = true;
       
+
     })
 
     $('#hit-btn').on('click', function(){ 
@@ -159,6 +165,7 @@
       // avdance base
 
       // update database
+
 
     });
      
@@ -172,6 +179,7 @@
       //out game logic
 
       //update data base
+
 
     });
   })
