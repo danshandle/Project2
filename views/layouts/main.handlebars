@@ -14,8 +14,8 @@
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   {{!-- Game Logic --}}
-  <script src="../../public/js/index.js"></script>
-  <script src="../../public/js/game.js"></script>
+ 
+  {{!-- <script src="../../public/js/game.js"></script> --}}
 
   <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
   <title>Baseball Scorecard</title>
@@ -43,11 +43,12 @@
 
            data.reduce(function(table, row){
              $(`<tr>
-                <th scope="row">${row.jersey_number}</th>
+                <th scope="row" class="player" id="${row.player_id}">${row.jersey_number}</th>
                 <td>${row.player_name}</td>
                 <td>${row.position}</td>
                 <td>${row.handness}</td>
                 <td>${row.bat_avg}</td>
+                <td><button class="player" id ="${row.player_id}">Bat</button></td>
               </tr>`).appendTo(table);
 
               return table;
