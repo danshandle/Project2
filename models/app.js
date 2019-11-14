@@ -1,5 +1,7 @@
 // Import the ORM to create functions that will interact with the database.
-const orm = require("../config/orm.js");
+const 
+  orm = require("../config/orm.js"),
+  moment = require('moment');;
 
 
 const baseball = {
@@ -18,7 +20,25 @@ const baseball = {
     orm.selectWhere("players", batterid, function(res) {
       cb(res);
     })
+  },
+  selectHits: function(batterid, cb) {
+    orm.updateHits("season_bat_stats", batterid, function(res) {
+      cb(res);
+    })
+  },
+  selectOuts: function(batterid, cb) {
+    orm.updateOuts("season_bat_stats", batterid, function(res) {
+
+      cb(res);
+    })
   }
+
+  // createMatch: (homeTeam, awayTeam, loc, cb ) => {
+  //   let date = moment().format('L');
+  //   orm.create('matches', homeTeam, awayTeam, loc, date, function(res) {}
+  // }
+
+  
 };
 
 module.exports = baseball;
