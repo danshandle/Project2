@@ -15,6 +15,7 @@ const orm = {
   },
 
   selectOne: (table, team_id, cb) => {
+
     let query = `SELECT 
                   p.player_id, 
                   player_name, 
@@ -27,6 +28,7 @@ const orm = {
                   LEFT JOIN season_bat_stats AS s 
                   ON p.player_id = s.player_id ;
                   WHERE team_id = '${team_id}'`;
+
 
     connection.query(query, function(err, res) {
       if (err) {
