@@ -1,9 +1,11 @@
+import { ENGINE_METHOD_PKEY_ASN1_METHS } from "constants";
 
-function match(homeTeam, awayTeam, location, startMatch) {
+function match(homeTeam, awayTeam, location, startInning) {
   /*Post to matches in baseballdb  */
   let 
     home_team_id = 1,
     away_team_id = 2,
+    inning = 1,
     visScoreInning = 0,
     homeScoreInning = 0;
   startInning(home_team_id, away_team_id);
@@ -12,7 +14,6 @@ function match(homeTeam, awayTeam, location, startMatch) {
 function startInning(){
     
     let 
-        inning = 1,
         visScoreInningText = $(`#visScore${inning}`),
         homeScoreInningText = $(`#homeScore${inning}`),
         batterbox = $('#batter-card');
@@ -30,6 +31,12 @@ function startInning(){
     homeScoreInningText.text(homeScoreInningText);
 
     inning ++;
+    if(inning >9 ) {
+        endGame();
+    } else {
+        
+        startInning();
+    }
 }
 
 function atBatsTop(){ //promises?
@@ -63,4 +70,6 @@ function atBatsTop(){ //promises?
     
 }
 
-atBatsBotton
+function atBatsBotton() {
+    console.log("home Team turn")
+}
