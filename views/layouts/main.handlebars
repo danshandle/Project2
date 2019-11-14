@@ -131,6 +131,7 @@
 
     $(document).on('click', '.player-at-bat-btn', function() {
       let dataSet = $(this)[0].dataset;
+      $('#batter-card').show();
       $('#batter-card-name').text(dataSet['name']);
       $('#batter-card-bat_avg').text(dataSet['bat_avg']);
       $('#batter-card-roster').text(dataSet['ros']);
