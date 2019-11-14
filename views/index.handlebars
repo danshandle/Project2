@@ -1,7 +1,7 @@
 <div class="container-fluid">
         <div class="card" style="width: 50rem;">
             <div class="card-header" id="sbheader">
-              <img class="center" src=https://i.imgur.com/PVEmUZN.gif height="50" width="600" alt="and beer" /> HEB: #1 in TX!
+              <img class="center" src="/images/scoreboardtext.gif" height="50" width="600" alt="and beer" /> HEB: #1 in TX!
             </div>
             <table class="card-table table" id="scoreboard">
               <thead>
@@ -24,13 +24,13 @@
                   <td id={{visTeam}}></td>
                   <td><form><input type="number" class="visScore" id="visScore1st"></form></td>
                   <td><form><input type="number" class="visScore" id="visScore2nd"></form></td>
-                  <td><form><input type="number" class="visScore" id="viscore3rd"></form></td>
-                  <td><form><input type="number" class="visScore" id="viscore4th"></form></td>
-                  <td><form><input type="number" class="visScore" id="viscore5th"></form></td>
-                  <td><form><input type="number" class="visScore" id="viscore6th"></form></td>
-                  <td><form><input type="number" class="visScore" id="viscore7th"></form></td>
-                  <td><form><input type="number" class="visScore" id="viscore8th"></form></td>
-                  <td><form><input type="number" class="visScore" id="viscore9th"></form></td>
+                  <td><form><input type="number" class="visScore" id="visScore3rd"></form></td>
+                  <td><form><input type="number" class="visScore" id="visScore4th"></form></td>
+                  <td><form><input type="number" class="visScore" id="visScore5th"></form></td>
+                  <td><form><input type="number" class="visScore" id="visScore6th"></form></td>
+                  <td><form><input type="number" class="visScore" id="visScore7th"></form></td>
+                  <td><form><input type="number" class="visScore" id="visScore8th"></form></td>
+                  <td><form><input type="number" class="visScore" id="visScore9th"></form></td>
                   <td><h3 id="resultVis"></h3></td>
                 </tr>
                 <tr>
@@ -55,22 +55,20 @@
 
 <script>
   var visTotalSum = 0;
-   $('.visScore').on('change', function(){
-     var currentValue = parseInt($(this).val())
-     visTotalSum += currentValue
+  $('.visScore').on('change', function () {
+    var currentValue = parseInt($(this).val())
+    visTotalSum += currentValue
     $('#resultVis').text(visTotalSum);
-   });
+  });
 
-   var homeTotalSum = 0;
-   $('.homeScore').on('change', function(){
-     var currentValue = parseInt($(this).val())
-     homeTotalSum += currentValue
+  var homeTotalSum = 0;
+  $('.homeScore').on('change', function () {
+    var currentValue = parseInt($(this).val())
+    homeTotalSum += currentValue
     $('#resultHome').text(homeTotalSum);
-   });
-
-
+  });
 </script>
- <script src="../public/js/index.js"></script>
+ <script type="text/javascript" src="/js/index.js"></script>
 
 
 <div id="diamond">
@@ -78,11 +76,11 @@
     <div class="row">
     </div>
 
-<div class="row">
-  <div class="col-md-3 offset-md-1">
-    <h1>Home Team</h1>
-    <ul id="home-team">
-      {{#each teams}}
+    <div class="row">
+      <div class="col-md-3 offset-md-1" id="homediv">
+        <h1>Home Team</h1>
+        <ul id="home-team">
+          {{#each teams}}
           {{> teams/homeTeam}}
       {{/each}}
     </ul>
@@ -98,10 +96,10 @@
     </div>
   </div>
   
-  <div class="col-md-3 ">
+  <div class="col-md-3" id="awaydiv">
 
     <h1>Away Team</h1>
-    <ul >
+    <ul id="away-team">
       {{#each teams}}
           {{> teams/awayTeam}}
       {{/each}}
@@ -111,21 +109,8 @@
 
   </div>
 
-
-
-
-<div class='container'>
-        <div class='row'>
-            <div class='col-md-12'>
-                <button type="button" id="advance">Advance Bases</button>
-                <div id="diamond"></div>
-            </div>
-        </div>
-    </div>
-
 <button class="player" id ="30">player30</button>
 <button class="player" id ="20">player20</button>
-
 
 <div id = buttons>
 <a href="#" class="btn btn-primary" id="hitbutton">HIT!</a>
@@ -133,8 +118,5 @@
 </div>
 
 
-
-
-
-
-
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
