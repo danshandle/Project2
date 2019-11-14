@@ -16,7 +16,9 @@ const baseball = {
       // console.log(res);
       cb(res);
     });
+
   },
+
 
 
 
@@ -26,6 +28,7 @@ const baseball = {
   //     cb(res);
   //   })
   // },
+
 
    selectHits: function(batterid, cb) {
      orm.updateHits("season_bat_stats", batterid, function(res) {
@@ -38,6 +41,7 @@ const baseball = {
        cb(res);
      })
    },
+
 
   // createMatch: (homeTeam, awayTeam, loc, result, cb ) => { 
     

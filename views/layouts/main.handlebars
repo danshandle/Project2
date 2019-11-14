@@ -98,7 +98,6 @@ $('#batter-card').hide();
       $('#away-roster').empty();
       let
         id = $(this).data('id')
-       
 
       $(`.${id}`).hide();
       $('#away-team').hide();
@@ -111,7 +110,7 @@ $('#batter-card').hide();
           data.reduce(function (table, row) {
             $(`<tr>
 
-                <td><button class="player-at-bat-btn" id="ht-player-${row.player_id} disable="false"
+                <td><button class="player-at-bat-btn" id="at-player-${row.player_id}" disable="false"
 
                   data-name="${row.player_name}"
                   data-pos="${row.position}"
@@ -177,6 +176,7 @@ $('#batter-card').hide();
       $('#batter-card').hide();
       console.log('hit');
       console.log(player_id);
+
       $.ajax({
       url: "batter/hits/" + player_id,
       type: "post"
@@ -186,10 +186,10 @@ $('#batter-card').hide();
 
       
 
+
       // avdance base
 
       // update database
-
 
     });
      
@@ -200,12 +200,14 @@ $('#batter-card').hide();
       console.log('out');
       console.log(player_id);
 
+
       $.ajax({
       url: "batter/outs/" + player_id,
       type: "post"
     }).then(function(data){
         console.log(data)
     })
+
 
       //out game logic
 

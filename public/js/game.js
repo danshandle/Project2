@@ -1,3 +1,4 @@
+
 function match(homeTeam, awayTeam, location, startMatch) {
   /*Post to matches in baseballdb  */
   let home_team_id = 1
@@ -6,12 +7,17 @@ function match(homeTeam, awayTeam, location, startMatch) {
 };
 
 function startInning(){
+    
     let 
         inning = 1,
         visScoreInningText = $(`#visScore${inning}`),
         homeScoreInningText = $(`#homeScore${inning}`),
+        batterbox = $('#batter-card')
         visScoreInning = 0,
         homeScoreInning = 0;
+
+    batterbox.hide();
+
 
         $('#hit-btn').on("click", function(){
             console.log("hello")
@@ -27,3 +33,4 @@ function startInning(){
 
     inning ++;
 }
+
