@@ -14,17 +14,18 @@
   {{!-- Game Logic --}}
 
   <script src="../../public/js/index.js"></script>
-  <script src="../../public/js/game.js"></script>
+  
 
  
   <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
   <title>Baseball Scorecard</title>
-  <link rel="icon" type="image/jpg" img-src="./images/baseball_favicon.jpg">
+  
 </head>
 
 <body>
   {{{body}}}
 </body>
+
 
 <script>
   $(document).ready(() => {
@@ -34,8 +35,8 @@
       $('#home-roster').empty();
       let id = $(this).data('id');
       console.log(`clicked  ${id}`);
-      $(`.${id}`).hide();
-      $("#home-team").hide();
+ //     $(`.${id}`).hide();
+ //     $("#home-team").hide();
 
       $.ajax(`/api/home/team/${id}`, {
         type: 'GET'
@@ -78,8 +79,8 @@
       let
         id = $(this).data('id')
       console.log(`clicked  ${id}`);
-      $(`.${id}`).hide();
-      $('#away-team').hide();
+ //     $(`.${id}`).hide();
+ //     $('#away-team').hide();
 
       $.ajax(`/api/away/team/${id}`, {
         type: 'GET'
