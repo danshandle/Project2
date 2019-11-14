@@ -38,33 +38,18 @@ router.route("/api/away/team/:id").get(function(req, res) {
   });
 });
 
-router.route("/api/matches").post(function(req, res) {
-  baseball.createMatch(home, away, loc, function(result) {
-    
-    res.json({ id: result.insertId });
-  });
-});
 
-router.route("/batter/:id").get(function(req, res) {
-  baseball.selectBatter(req.params.id, function(data) {
-    let playersObj = {
-      players: data
-    };
-    console.log(playersObj);
-    res.render("./partials/batter/batter", playersObj);
 
-  });
-});
 
-router.route("/batter/hits/:id").get(function(req, res) {
-  baseball.selectHits(req.params.id, function(data) {
-    console.log(data)
-  })
-})
+// router.route("/batter/hits/:id").get(function(req, res) {
+//   baseball.selectHits(req.params.id, function(data) {
+//     console.log(data)
+//   })
+// })
 
-router.route("/batter/outs/:id").get(function(req, res) {
-  baseball.selectOuts(req.params.id, function(data) {
-    console.log(data)
-  })
-})
+// router.route("/batter/outs/:id").get(function(req, res) {
+//   baseball.selectOuts(req.params.id, function(data) {
+//     console.log(data)
+//   })
+// })
 module.exports = router;
