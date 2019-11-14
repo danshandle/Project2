@@ -27,6 +27,20 @@
 <script>
   $(document).ready(() => {
 
+    const backgrounds = new Array( //array of background images
+    "url(../images/diamondEmpty.jpg)",
+    "url(../images/diamond1stBase.jpg)",
+    "url(../images/diamond2ndBase.jpg)",
+    "url(../images/diamond3rdBase.jpg)"
+  );
+
+var mainPage = $("body");
+//mainPage.css("background-image", backgrounds[0] + "top center no-repeat");
+let current = 0; //resets base indicator to empty at start of inning
+
+$('#batter-card').hide();
+
+
     $('.home-team-btn').on('click', function () {
       $('#home-roster').empty();
       let id = $(this).data('id');
@@ -153,6 +167,8 @@
     })
 
     $('#hit-btn').on('click', function(){ 
+      current++;
+      mainPage.css("background-image", backgrounds[current]);
       let player_id = $(this).parent()[0].dataset['player_id'];
       $('#batter-card').hide();
       console.log('hit');
