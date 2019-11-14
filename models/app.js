@@ -21,12 +21,24 @@ const baseball = {
       cb(res);
     })
   },
-  createMatch: (homeTeam, awayTeam, loc, cb ) => {
-    let date = moment().format('L');
-    orm.create('matches', homeTeam, awayTeam, loc, date, function(res) {
+  selectHits: function(batterid, cb) {
+    orm.updateHits("season_bat_stats", batterid, function(res) {
+      cb(res);
+    })
+  },
+  selectOuts: function(batterid, cb) {
+    orm.updateOuts("season_bat_stats", batterid, function(res) {
+
       cb(res);
     })
   }
+
+  // createMatch: (homeTeam, awayTeam, loc, cb ) => {
+  //   let date = moment().format('L');
+  //   orm.create('matches', homeTeam, awayTeam, loc, date, function(res) {}
+  // }
+
+  
 };
 
 module.exports = baseball;
