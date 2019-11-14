@@ -16,7 +16,7 @@ const baseball = {
       // console.log(res);
       cb(res);
     });
-  }
+  },
 
 
 
@@ -27,17 +27,17 @@ const baseball = {
   //   })
   // },
 
-  // selectHits: function(batterid, cb) {
-  //   orm.updateHits("season_bat_stats", batterid, function(res) {
-  //     cb(res);
-  //   })
-  // },
-  // selectOuts: function(batterid, cb) {
-  //   orm.updateOuts("season_bat_stats", batterid, function(res) {
+   selectHits: function(batterid, cb) {
+     orm.updateHits("season_bat_stats", batterid, function(res) {
+       cb(res);
+     })
+   },
+   selectOuts: function(batterid, cb) {
+     orm.updateOuts("season_bat_stats", batterid, function(res) {
 
-  //     cb(res);
-  //   })
-  // },
+       cb(res);
+     })
+   },
 
   // createMatch: (homeTeam, awayTeam, loc, result, cb ) => { 
     
