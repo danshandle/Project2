@@ -1,3 +1,4 @@
+import { start } from "repl";
 
 function match(homeTeam, awayTeam, location, startMatch) {
   /*Post to matches in baseballdb  */
@@ -34,3 +35,7 @@ function startInning(){
     inning ++;
 }
 
+$(document).on("click", '#start-match',function(){
+    console.log("game started")
+    startInning()
+})
