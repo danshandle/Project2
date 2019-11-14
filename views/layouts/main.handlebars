@@ -60,6 +60,7 @@ $('#batter-card').hide();
                 <td>${row.position}</td>
                 <td>${row.handness}</td>
                 <td>${row.bat_avg}</td>
+
                 <td><button class="player-at-bat-btn" id="ht-player-${row.player_id}" disable="false"
 
                   data-name="${row.player_name}"
@@ -109,8 +110,8 @@ $('#batter-card').hide();
           data.reduce(function (table, row) {
             $(`<tr>
 
-
                 <td><button class="player-at-bat-btn" id="at-player-${row.player_id}" disable="false"
+
                   data-name="${row.player_name}"
                   data-pos="${row.position}"
                   data-ros="${row.jersey_number}"
@@ -145,6 +146,7 @@ $('#batter-card').hide();
       );
     });
 
+
     $(document).on('click', '.player-at-bat-btn', function(e) {
       let isAtBat =  e.target.getAttribute('disable');
       console.log(isAtBat)
@@ -164,6 +166,7 @@ $('#batter-card').hide();
      }
       //e.currentTarget.attributes['disable'] = true;
       
+
     })
 
     $('#hit-btn').on('click', function(){ 
