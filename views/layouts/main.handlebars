@@ -23,14 +23,13 @@
   {{{body}}}
 </body>
 
+
 <script>
   $(document).ready(() => {
-
 
     $('.home-team-btn').on('click', function () {
       $('#home-roster').empty();
       let id = $(this).data('id');
-      
       $(`.${id}`).hide();
       $("#home-team").hide();
 
@@ -47,7 +46,10 @@
                 <td>${row.position}</td>
                 <td>${row.handness}</td>
                 <td>${row.bat_avg}</td>
+
+
                 <td><button class="player-at-bat-btn" id="ht-player-${row.player_id}" disable="false"
+
                   data-name="${row.player_name}"
                   data-pos="${row.position}"
                   data-ros="${row.jersey_number}"
@@ -83,7 +85,7 @@
       $('#away-roster').empty();
       let
         id = $(this).data('id')
-     
+
       $(`.${id}`).hide();
       $('#away-team').hide();
 
@@ -94,6 +96,8 @@
         function (data) {
           data.reduce(function (table, row) {
             $(`<tr>
+
+
                 <td><button class="player-at-bat-btn" id="ht-player-${row.player_id} disable="false"
                   data-name="${row.player_name}"
                   data-pos="${row.position}"
@@ -156,6 +160,16 @@
       console.log('hit');
       console.log(player_id);
 
+      $.ajax({
+      url: "batter/hits/" + player_id,
+      type: "post"
+    }).then(function(data){
+        console.log(data)
+    })
+
+      
+
+
       // avdance base
 
       // update database
@@ -169,9 +183,19 @@
       console.log('out');
       console.log(player_id);
 
+
+      $.ajax({
+      url: "batter/outs/" + player_id,
+      type: "post"
+    }).then(function(data){
+        console.log(data)
+    })
+
+
       //out game logic
 
       //update data base
+
 
     });
   })
