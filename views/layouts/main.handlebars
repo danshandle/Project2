@@ -52,7 +52,8 @@
                   data-pos="${row.position}"
                   data-ros="${row.jersey_number}"
                   data-hand="${row.handness}"
-                  data-bat_avg="${row.bat_avg}">Bat</button></td>
+                  data-bat_avg="${row.bat_avg}"
+                  data-player_id="${row.player_id}">Bat</button></td>
               </tr>`).appendTo(table);
 
             return table;
@@ -73,7 +74,7 @@
                   <tbody id="home-roster"></tbody>
                 </table>`)).appendTo($('#home-roster'))
 
-      
+         
         }
       );
     });
@@ -98,7 +99,8 @@
                   data-pos="${row.position}"
                   data-ros="${row.jersey_number}"
                   data-hand="${row.handness}"
-                  data-bat_avg="${row.bat_avg}">Bat</button>
+                  data-bat_avg="${row.bat_avg}"
+                  data-player_id="${row.player_id}">Bat</button></td>
                 </td>
                 <th scope="row">${row.jersey_number}</th>
                 <td>${row.player_name}</td>
@@ -123,8 +125,6 @@
                   </thead>
                   <tbody id="home-roster"></tbody>
                 </table>`)).appendTo($('#away-roster'))
-
-                
         }
       );
     });
@@ -136,7 +136,16 @@
       $('#batter-card-roster').text(dataSet['ros']);
       $('#batter-card-pos').text(`Position: ${dataSet['pos']}`);
       $('#batter-card-hand').text(`Bats: ${dataSet['hand']}`);
+      $('#batter-card').attr('data-player_id',`${dataSet['player_id']}`);
     })
+
+    $('#hit-btn').on('click', function(){ 
+      console.log('hit');
+      console.log($(this).parent())
+    })
+     
+
+    $('#out-btn').on('click', function(){ console.log('out')});
   })
 </script>
 
