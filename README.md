@@ -2,53 +2,44 @@
 Novemberists
 
 # EEphus
-  > Baseball stat collection app
+  > Baseball stat collection app for a very slow EEphus Pitches League
 
 
 ## MVP
 
-README2-POF
+
  - [ ] Requirements
 
 
-     - [ ] Express Web Server
+     - [x] Express Web Server
 
      - [X] MySql Data Base
      
-     - [ ] ORM
+     - [x] ORM
 
-     - [ ] Retrieve (GET)
+     - [x] Retrieve (GET)
 
-     - [ ] Add data (POST)
+     - [x] Add data (POST)
 
-     - [ ] New technology
+     - [x] New technology
 
      - [x] Frontend UI
 
-     - [ ] MVC structure
+     - [x] MVC structure
 
      - [ ] Protect sensitive information
       
 - [x] Application
 
-     - [ ] Record Batter stats
+     - [x] Record Batter stats
+
+     - [x] calculates Batter stats
      
-     - [ ] User input innings
+     - [x] User input innings
 
-     - [ ] User select teams
+     - [x] User select teams
 
-    
-
-
-
-## Developmental features
-- [ ] User enabled features
-- [ ] User authization
-- [ ] Pitcher Stats: requires collection of data per pitch
-- [ ] Record Doubles and Triple
-- [ ] Store matches stats
-<!-- currently hold match stats in js send stats to season stats to dynamiclly updat ERA and batting average -->
-
+  
 
 ## Prerequisites
 
@@ -65,11 +56,41 @@ README2-POF
   
   
   - [Express-handlebars](https://www.npmjs.com/package/express-handlebars)
-  
- 
-  
+
+## New Technology
+
+  - [LucidChart](https://www.lucidchart.com/)
+
+  - KanBan
+
+## Developmental features
+- [ ] User authization
+- [ ] User enabled features
+- [ ] Pitcher Stats: requires collection of data per pitch
+- [ ] Record Doubles and Triple
+- [ ] Store matches stats
 
 ## Usage
+
+### EEphus Pitches League Rules
+1. League rules
+  - No Stealing (Requires collection by pitch) 
+  - 1 Hit, 1 Bag(Requires collection by) 
+  - One Pitcher One Game(Requires collection by inning)
+  - Only 9 AtBats per inning
+  - Eephus Pitch Only
+
+
+2. Use [Seeds.sql](./models/seeds.sql) to insert league Information
+
+3. Select Home and A Team per match
+
+4. Click Start Game 
+
+5. Follow Along with the game
+    - select current batter
+    - record hit or out
+
 
   
   
