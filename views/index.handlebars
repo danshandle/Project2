@@ -76,48 +76,57 @@
   <div class="container">
     <div class="row">
     </div>
-
-<div class="row">
-  <div class="col-md-3 offset-md-1">
-    <h1>Home Team</h1>
-    <ul>
-      {{#each teams}}
-          {{> teams/homeTeam}}
-      {{/each}}
-    </ul>
   </div>
-  
-  <div class="col-md-3 offset-md-5">
-    <h1>Away Team</h1>
-    <ul>
-      {{#each teams}}
-          {{> teams/homeTeam}}
-      {{/each}}
-    </ul>
+  <div class="row">
+    <div class="col-md-3">
 
+      <h1>Home Team</h1>
+      <ul id="home-team">
+        {{#each teams}}
+          {{> teams/homeTeam}}
+        {{/each}}
+      </ul>
+      
+    </div>
+    <div class="offset-md-7 float-right">
+      <h1>Away Team</h1>
+      <ul id="away-team">
+        {{#each teams}}
+            {{> teams/awayTeam}}
+        {{/each}}
+      </ul>
+
+    </div>
   </div>
 
+  <div class="row fixed-bottom" id="roster-and-batter">
+    <div class="col-md-4" id="homediv">
 
-<div class="col-md-4 offset-md-4" id = "batterbox">
-    <h1>Batter</h1>
-</div>
+      <div id="home-roster"></div>
 
-<div class='container'>
-        <div class='row'>
-            <div class='col-md-12'>
-                <button type="button" id="advance">Advance Bases</button>
-                <div id="diamond"></div>
-            </div>
-        </div>
     </div>
 
-<button class="player" id ="30">player30</button>
-<button class="player" id ="20">player20</button>
+    <div class="col-md-2 offset-md-1 align-bottom">
+      <div class="card border-dark mb-3 sticky-bottom" id="batter-card" style="max-width: 18rem;">
+        <div class="card-header" id="batter-card-name"></div>
+        <div class="card-body text-dark">
+          <h4 class="card-title" id="batter-card-bat_avg"></h4>
+          <h5 class="card-title" id="batter-card-roster"></h5>
+          <h5 class="card-title" id="batter-card-pos">Pos:</h5>
+          <h5 class="card-title" id="batter-card-hand">Handness:</h5>
+         </div> 
+          <button id="hit-btn">Hit</button>
+          <button id="out-btn">Out</button>
+      </div>
+    </div>
 
- <a href="#" class="btn btn-primary" id="hitbutton">HIT!</a>
-      <a href="#" class="btn btn-primary" id="outbutton">OUT</a>
+    <div class="col-md-4 offset-md-1" id="awaydiv">
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+      
 
+      <div id="away-roster"></div>
+
+    </div>
+  </div>  
+</div>
 

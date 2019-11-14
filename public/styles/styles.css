@@ -26,9 +26,21 @@ input[type=number]::-webkit-outer-spin-button {
   color: white;
  }
 
- #sbheader{
+ #sbheader {
   background-image: linear-gradient(to right, blue , red);
    color: white;
    font-size: 16pt;
    font-weight: bolder;
+ }
+
+ #roster-and-batte {
+   display: flex;
+   align-items: flex-end;
+   
+
+ }
+
+ #home-team,
+ #away-team {
+   list-style: none;
  }

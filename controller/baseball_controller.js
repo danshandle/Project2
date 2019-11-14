@@ -13,14 +13,44 @@ router.route("/").get(function(req, res) {
   });
 });
 
-router.route("/batter/:id").get(function(req, res) {
-  baseball.selectBatter(req.params.id, function(data) {
+router.route("/api/home/team/:id").get(function(req, res) {
+  let team_id = req.params.id;
+  baseball.allplayers(team_id, function(data) {
     let playersObj = {
-      players: data
+      homePlayers: data
     };
-    console.log(playersObj);
-    res.render("./partials/batter/batter", playersObj);
+
+
+    res.json(playersObj.homePlayers);
+
   });
 });
+
+router.route("/api/away/team/:id").get(function(req, res) {
+  let team_id = req.params.id;
+  baseball.allplayers(team_id, function(data) {
+    let playersObj = {
+      awayPlayers: data
+    };
+
+    res.json(playersObj.awayPlayers);
+
+  });
+});
+
+
+
+
+ router.route("/batter/hits/:id").post(function(req, res) {
+   baseball.selectHits(req.params.id, function(data) {
+     console.log(data)
+   })
+ })
+
+ router.route("/batter/outs/:id").post(function(req, res) {
+   baseball.selectOuts(req.params.id, function(data) {
+     console.log(data)
+   })
+ })
 
 module.exports = router;
