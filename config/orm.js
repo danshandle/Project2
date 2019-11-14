@@ -103,15 +103,15 @@ const orm = {
   //      cb(res)
   //   })
   // },
-  // updateOuts:(table, condition, cb) => {
-  //   let query = `UPDATE ${table} SET at_bats = at_bats +1 Where player_id = ${condition}`
-  //   connection.query(query, function(err, res) {
-  //     if (err) {
-  //       throw err;
-  //     }
-  //     cb(res)
-  //   })
-  // },
+   updateOuts:(table, condition, cb) => {
+     let query = `UPDATE ${table} SET at_bats = at_bats +1 Where player_id = ${condition}`
+     connection.query(query, function(err, res) {
+       if (err) {
+         throw err;
+       }
+       cb(res)
+     })
+   },
 
 
   // create: (table, homeTeam, awayTeam, loc, result, cb) => {
