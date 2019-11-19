@@ -1,86 +1,206 @@
 $(document).ready(() => {
-function newInning(inning) {
-  visScoreInning = 0;
-  homeScoreInning = 0;
-  homeTotalSum = 0;
-  visTotalSum = 0;
-
-
-  let top = new Promise((res, rej) => {
-    res(atBatsTop());
-  });
-  top.then(atBatsBottom());
-
-  console.log(visScoreInning);
-  console.log(homeScoreInning);
+async function startMatch(inning) {
+    await atBatsTop(); //1st inning
+    await atBatsBottom();
+    await atBatsTop(); //2nd inning
+    await atBatsBottom();
+    await atBatsTop(); //3rd inning
+    await atBatsBottom();
+    await atBatsTop(); //4th inning
+    await atBatsBottom();
+    await atBatsTop(); //5th inning
+    await atBatsBottom();
+    await atBatsTop(); //6th inning
+    await atBatsBottom();
+    await atBatsTop(); //7th inning
+    await atBatsBottom();
+    await atBatsTop(); //8th inning
+    await atBatsBottom();
+    await atBatsTop(); //9th inning
+    await atBatsBottom();  
 }
+
 function atBatsTop() {
-    console.log("top");
-    current = 0;
-    let outs = 0,
-      hits = 0;
+    inning += 1;                
 
-    $(".out-btn").on("click", function() {
-      outs++;
-      console.log(outs);
+    mainPage.css("background-image", backgrounds[0]);
+    let
+        visOuts = 0,
+        visHits = 0,
+        visScoreInning = 0;
 
-      if (outs < 3) {
-        if (hits >= 4) {
-          visScoreInning++;
-          $(`#visScore${inning}`).text(visScoreInning);
-          //gif
+    return new Promise((res, rej) => {
+        console.log(`top ${inning}`);
+        
+        $(".out-btn").on("click",  function() {
+            let 
+                player_id = $(this).parent()[0].dataset["player_id"];
+            $("#batter-card").hide();
+
+
+            $.ajax({
+                url: `batter/outs/${player_id}`,
+                type: "post"
+            })
+            .then(function(data) {
+                console.log(`Player ID: ${player_id} updated`);
+            });
+
+            visOuts++;
+            console.log(`outs: ${visOuts}`);
+
+            if(visOuts >= 3){
+                $(`#visScore${inning}`).unbind();
+                mainPage.css("background-image", backgrounds[0]);
+                res();
+            }
+        });
+
+
+
+
+        $(".hit-btn").on("click", function() {
+        let 
+            player_id = $(this).parent()[0].dataset["player_id"];
+
+            $("#batter-card").hide();
+            visHits++;
+
+        
+
+        switch(true){
+            case (visHits === 0): 
+                console.log('empty bags');
+                mainPage.css('background-image', backgrounds[visHits]);
+                break;
+            case (visHits === 1): 
+                console.log('one on');
+                mainPage.css('background-image', backgrounds[visHits]);
+                break;
+            case (visHits === 2): 
+                console.log('two one');
+                mainPage.css('background-image', backgrounds[visHits]);
+                break;
+            case (visHits === 3):
+                mainPage.css('background-image', backgrounds[visHits]);
+                break;
+            default: mainPage.css('background-image', backgrounds[3])
+        };
+
+
+
+         $.ajax({
+            url: `batter/hits/${player_id}`,
+            type: "post"
+        })
+        .then(function(data) {
+            console.log(`Player ID: ${player_id} updated`);
+        });
+        
+        if (visOuts < 3) {
+            if (visHits >= 4) {
+            visScoreInning += 1;
+            $(`#visScore${inning}`).val(visScoreInning);
+            //gif
+            }
         }
-      } else {
-        return;
-      }
-    });
+        
+        console.log(`vis score: ${visScoreInning}`)
+        });
+       
 
-    $(".hit-btn").on("click", function() {
-      hits++;
-      console.log(hits);
-    });
-}
+    })
+
+    
+};
 
 function atBatsBottom() {
-    console.log("bottom");
-    current = 0;
+    mainPage.css("background-image", backgrounds[0]);
+    let
+        homeOuts = 0,
+        homeHits = 0,
+        homeScoreInning = 0;
+   return new Promise((res, rej) => {
+        console.log(`bottom ${inning}`);
+        
+        
 
-    let outs = 0,
-      hits = 0;
+        $(".out-btn").on("click",  function() {
+            let 
+                player_id = $(this).parent()[0].dataset["player_id"];
+            $("#batter-card").hide();
 
-    $(".hit-btn").on("click", function() {
-      hits++;
-      console.log(hits);
-    });
+            $.ajax({
+                url: `batter/outs/${player_id}`,
+                type: "post"
+            })
+            .then(function(data) {
+                console.log(`Player ID: ${player_id} updated`);
+            });
+            
 
-    $(".out-btn").on("click", function() {
-      outs++;
-      console.log(outs);
+            homeOuts++;
+            console.log(`outs: ${homeOuts}`);
 
-      if (outs < 3) {
-        if (hits >= 4) {
-          homeScoreInning++;
-          $(`#visScore${inning}`).text(homeScoreInning);
+            if(homeOuts >= 3){
+                $(`#homeScore${inning}`).unbind();
+                res();
+            }
+        });
 
-          //gif
+        $(".hit-btn").on("click", function() {
+        let 
+            player_id = $(this).parent()[0].dataset["player_id"];
+        $("#batter-card").hide();
+
+        homeHits++;
+
+        console.log(`hit: ${homeHits}`);
+        switch(true){
+            case (homeHits === 1): 
+                console.log('one on');
+                mainPage.css('background-image', backgrounds[homeHits]);
+                break;
+            case (homeHits === 2): 
+                console.log('two one');
+                mainPage.css('background-image', backgrounds[homeHits]);
+                break;
+            case (homeHits === 3):
+                mainPage.css('background-image', backgrounds[homeHits]);
+                break;
+            default: mainPage.css('background-image', backgrounds[3])
+        };
+
+         $.ajax({
+            url: `batter/hits/${player_id}`,
+            type: "post"
+        })
+        .then(function(data) {
+            console.log(`Player ID: ${player_id} updated`);
+        });
+
+        if (homeOuts < 3) {
+            if (homeHits >= 4) {
+            homeScoreInning += 1;
+            $(`#homeScore${inning}`).val(homeScoreInning);
+            //gif
+            }
         }
-      } else {
-        console.log(inning);
-        inning++;
-        return;
-      }
-    });
+        console.log(`hit: ${homeHits}`);
+        console.log(`home score: ${homeScoreInning}`)
+        });
+    
+    })
+
 }
 
-  let home_team_id,
+let 
+    home_team_id,
     away_team_id,
-    inning = 1,
-    visScoreInning = 0,
-    homeScoreInning = 0,
-    current, //resets base indicator to empty at start of inning;
-    mainPage = $("body");
+    inning = 0,
+    mainPage = $("body")
     //mainPage.css("background-image", backgrounds[0] + "top center no-repeat");
-    
+  
 const backgrounds = new Array( //array of background images
     "url(../images/diamondEmpty.jpg)",
     "url(../images/diamond1stBase.jpg)",
@@ -215,56 +335,19 @@ const backgrounds = new Array( //array of background images
     //e.currentTarget.attributes['disable'] = true;
   });
 
-  $(".hit-btn").on("click", function() {
-    current++;
-    mainPage.css("background-image", backgrounds[current]);
-    let player_id = $(this).parent()[0].dataset["player_id"];
-    $("#batter-card").hide();
-    console.log("hit");
-    console.log(player_id);
-
-    $.ajax({
-      url: "batter/hits/" + player_id,
-      type: "post"
-    }).then(function(data) {
-      console.log(data);
-    });
-  });
-
-  $(".out-btn").on("click", function() {
-    let player_id = $(this).parent()[0].dataset["player_id"];
-    $("#batter-card").hide();
-    console.log("out");
-    console.log(player_id);
-
-    $.ajax({
-      url: "batter/outs/" + player_id,
-      type: "post"
-    }).then(function(data) {
-      console.log(data);
-    });
-  });
-
-
+  
   $("#start-match").on("click", function() {
-    console.log("game started");
-
-    let match = new Promise((res, rej) => {
-      newInning(inning);
-      res();
-    });
-
-    match;
-    // .then(newInning(inning))
-    // .then(newInning(inning))
-    // .then(newInning(inning))
-    // .then(newInning(inning))
-    // .then(newInning(inning))
-    // .then(newInning(inning))
-    // .then(newInning(inning))
-    // .then(newInning(inning))
-
+    
     if ($(this).text() === "Start Match") {
+
+        console.log("game started");
+        startMatch(inning)
+            .then(
+               function() {
+                   console.log('Match OVER')
+               }
+            )
+
       $(this)
         .attr("disable", true)
         .text("End Game");
@@ -291,6 +374,8 @@ const backgrounds = new Array( //array of background images
         .text("Start Game");
     }
   });
+  
+  
 
   //Sum up the scores on the scoreboard
   $(".visScore").on("change", function() {
@@ -307,3 +392,5 @@ const backgrounds = new Array( //array of background images
   });
 
 });
+
+

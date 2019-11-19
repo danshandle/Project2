@@ -35,8 +35,7 @@ var API = {
 
 $("#hitbutton").on("click", function () {
   console.log("hit");
-  current++;
-  mainPage.css("background-image", backgrounds[current]);
+ 
   $("#batterbox").empty()
   //no need for logic to keep the baserunner indicator with bases loaded as current increments beyond
   // the array length and will not change the image. Image change will occur when inning changes side
