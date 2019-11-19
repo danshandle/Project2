@@ -73,10 +73,10 @@ const orm = {
     })
   },
 
-
-  create: (table, homeTeam, awayTeam, loc, date, cb) => {
-    let query = `INSERT INTO ${table} (home, away, location, date, result) `;
-    query += `VALUES (${homeTeam}, ${awayTeam}, ${loc}, ${date}, );`;
+  /*Create Matches*/ //need to location
+  create: (table, homeTeam, awayTeam, homeScore, awayScore, cb) => {
+    let query = `INSERT INTO ${table} (home_id, away_id, home_score, away_score) `;
+    query += `VALUES (${homeTeam}, ${awayTeam}, ${homeScore}, ${awayScore});`;
 
     connection.query(query, function(err, res) {
       if (err) {

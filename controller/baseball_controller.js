@@ -3,15 +3,32 @@ const express = require("express"),
 
 const router = express.Router();
 
-router.route("/").get(function(req, res) {
-  baseball.allTeams(function(data) {
-    let teamsObj = {
-      teams: data
-    };
-    console.log(teamsObj);
-    res.render("index", teamsObj);
+router.route("/")
+  .get(function(req, res) {
+    baseball.allTeams(function(data) {
+      let teamsObj = {
+        teams: data
+      };
+      console.log(teamsObj);
+      res.render("index", teamsObj);
+    });
   });
-});
+  
+  router.route('/api/match')
+    .post(function(req, res) {
+      console.log(res)
+      let 
+        home_team_id = req.body.home,
+        away_team_id = req.body.away,
+        homeScore = req.body.homeScore,
+        awayScore = req.body.awayScore;
+        
+
+      baseball.createMatch(home_team_id, away_team_id, homeScore, awayScore, function(data) {
+        console.log(data)
+      })
+    })
+   
 
 router.route("/api/home/team/:id").get(function(req, res) {
   let team_id = req.params.id;

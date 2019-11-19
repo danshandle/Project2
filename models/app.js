@@ -19,6 +19,13 @@ const baseball = {
 
   },
 
+  createMatch: (home, away, homeScore, awayScore, cb) => {
+    orm.create('matches',home, away, homeScore, awayScore, function(res) {
+      cb(res);
+    })
+
+  },
+
 
 
 
@@ -40,17 +47,7 @@ const baseball = {
 
        cb(res);
      })
-   },
-
-
-  // createMatch: (homeTeam, awayTeam, loc, result, cb ) => { 
-    
-  //   orm.create('matches', homeTeam, awayTeam, loc, result, function(res) {
-  //     cb(res);
-      
-  //   })
-  // }
-
+   }
   
 };
 
