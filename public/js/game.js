@@ -97,7 +97,7 @@ const backgrounds = new Array( //array of background images
     let id = $(this).data("home-id");
     home_team_id = id;
     $(`.${id}`).hide();
-    $("#home-team").hide();
+    $("#home-team-drop").hide();
 
     $.ajax(`/api/home/team/${id}`, {
       type: "GET"
@@ -135,6 +135,7 @@ const backgrounds = new Array( //array of background images
                     <th scope="col">Position</th>
                     <th scope="col">Hand</th>
                     <th scope="col">Avg</th>
+                    <th scope="col">At Bat</th>
                 </tr>
                 </thead>
                 <tbody id="home-roster"></tbody>
@@ -150,7 +151,7 @@ const backgrounds = new Array( //array of background images
     away_team_id = id;
 
     $(`.${id}`).hide();
-    $("#away-team").hide();
+    $("#away-team-drop").hide();
 
     $.ajax(`/api/away/team/${id}`, {
       type: "GET"
@@ -159,7 +160,6 @@ const backgrounds = new Array( //array of background images
         .reduce(
           function(table, row) {
             $(`<tr>
-
                 <td><button class="player-at-bat-btn" id="at-player-${
                   row.player_id
                 }" disable="false"
@@ -183,12 +183,13 @@ const backgrounds = new Array( //array of background images
           $(`<table class="table table-bordered table-striped mb-0">
                   <thead>
                     <tr>
-                      <th scope="col"></th>
+                      <th scope="col">At Bat</th>
                       <th scope="col">Roster</th>
                       <th scope="col">Name</th>
                       <th scope="col">Position</th>
                       <th scope="col">Hand</th>
                       <th scope="col">Avg</th>
+                      
                     </tr>
                   </thead>
                   <tbody id="home-roster"></tbody>
