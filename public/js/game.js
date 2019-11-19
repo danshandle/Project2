@@ -21,6 +21,7 @@ $(document).ready(() => {
     return;
   }
 
+
   function atBats() {
     inning += 1;
     mainPage.css("background-image", backgrounds[0]);
@@ -100,6 +101,7 @@ $(document).ready(() => {
             default:
               mainPage.css("background-image", backgrounds[3]);
           }
+
 
           if (visOuts < 3) {
             if (visHits >= 4) {
