@@ -75,20 +75,38 @@
     <div class="col-md-3">
 
       <h1>Home Team</h1>
-      <ul id="home-team">
-        {{#each teams}}
-          {{> teams/homeTeam}}
-        {{/each}}
-      </ul>
+      
+      
+
+      <div class="dropdown" id="home-team-drop">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="home-team-roster" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Select Home Team
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <ul id="home-team">
+            {{#each teams}}
+                {{> teams/homeTeam}}
+              {{/each}}
+          </ul>
+        </div>
+      </div>
       
     </div>
     <div class="offset-md-7 float-right">
       <h1>Away Team</h1>
-      <ul id="away-team">
-        {{#each teams}}
-            {{> teams/awayTeam}}
-        {{/each}}
-      </ul>
+      
+      <div class="dropdown" id="away-team-drop">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="away-team-roster" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Select Away Team
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <ul id="away-team">
+            {{#each teams}}
+                {{> teams/awayTeam}}
+            {{/each}}
+          </ul>
+        </div>
+      </div>
 
     </div>
   </div>
