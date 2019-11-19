@@ -1,4 +1,7 @@
+
 $(document).ready(() => {
+  
+  
   let home_team_id,
     away_team_id,
     inning = 0,
@@ -260,6 +263,28 @@ $(document).ready(() => {
   $("#start-match").on("click", function() {
     if ($(this).text() === "Start Match") {
       console.log("game started");
+
+      //Resquest gif
+      let url = `https://api.giphy.com/v1/gifs/search?q=baseball&api_key=efON0kuaf67AQ7xZbpJnftqbH8mQgHwh$&limit=10`;
+      $.ajax({
+        url,
+        method: 'GET'
+      }).then(function(response){
+        
+        let result = response.data;
+        console.log(result);
+
+        // for(let i = 0; i < result.length; i++){
+        //   let imgAnimate = result[i].images['original']['url'];
+        //   $('<gif-jumbo').attr({
+        //     
+        //     src: animate,
+        //   });
+       
+        // }
+      }) 
+
+      
       startMatch(inning).then(function() {
         console.log("Match OVER");
       });
