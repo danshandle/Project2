@@ -44,3 +44,12 @@ input[type=number]::-webkit-outer-spin-button {
  #away-team {
    list-style: none;
  }
+
+.my-custom-scrollbar {
+  position: relative;
+  height: 300px;
+  overflow: auto;
+}
+.table-wrapper-scroll-y {
+  display: block;
+}
