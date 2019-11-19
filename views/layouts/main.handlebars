@@ -16,22 +16,23 @@
  
   <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
   <title>Baseball Scorecard</title>
-  <script src="/js/game.js"></script>
+  
 </head>
 
 <body>
   {{{body}}}
+  <script src="/js/game.js"></script>
 </body>
 
 
-<script src="/js/game.js"></script>
+
 
 <script>
   $(document).ready(() => {
 
     let 
       home_team_id,
-      away_team_id;
+      away_team_id;                                       
 
     const backgrounds = new Array( //array of background images
     "url(../images/diamondEmpty.jpg)",
@@ -69,7 +70,6 @@ $('#batter-card').hide();
                 <td>${row.bat_avg}</td>
 
                 <td><button class="player-at-bat-btn" id="ht-player-${row.player_id}" disable="false"
-
                   data-name="${row.player_name}"
                   data-pos="${row.position}"
                   data-ros="${row.jersey_number}"
@@ -79,9 +79,6 @@ $('#batter-card').hide();
               </tr>`).appendTo(table);
 
             return table;
-
-            
-
 
           }, $(`<table class="table">
                   <thead>
@@ -95,8 +92,6 @@ $('#batter-card').hide();
                   </thead>
                   <tbody id="home-roster"></tbody>
                 </table>`)).appendTo($('#home-roster'))
-
-         
         }
       );
     });
@@ -119,7 +114,6 @@ $('#batter-card').hide();
             $(`<tr>
 
                 <td><button class="player-at-bat-btn" id="at-player-${row.player_id}" disable="false"
-
                   data-name="${row.player_name}"
                   data-pos="${row.position}"
                   data-ros="${row.jersey_number}"
@@ -167,9 +161,7 @@ $('#batter-card').hide();
         $('#batter-card-pos').text(`Position: ${dataSet['pos']}`);
         $('#batter-card-hand').text(`Bats: ${dataSet['hand']}`);
         $('#batter-card').attr('data-player_id',`${dataSet['player_id']}`);
-        $(this)
-          .attr('disable', true)
-          .css("color", "white");
+        
       
      }
       //e.currentTarget.attributes['disable'] = true;
@@ -215,23 +207,46 @@ $('#batter-card').hide();
     }).then(function(data){
         console.log(data)
     })
-
-
-      //out game logic
-
-      //update data base
-
-
     });
 
-   
-    
-    
+
     $(document).on("click", '#start-match',function(){
-    console.log("game started");
-    match(home_team_id, away_team_id);
-})
+   
+    if ($(this).text() === 'Start Match') {
+       console.log("game started");
+     
+      $(this)
+        .attr('disable', true)
+        .text('End Game');
+  
+    } else {
+      console.log('game ended');
+      //let
+       // homeScore = Number.parseInt($('#resultHome').text())
+        //awayScore = Number.parseInt($('#resultVis').text())
+
+        
+
+      var 
+        newMatch = {
+          home: home_team_id,
+          away: away_team_id,
+          homeScore: Number.parseInt($('#resultHome').text()),
+          awayScore: Number.parseInt($('#resultVis').text())
+          
+        };
+    
+        
+      /*Post Match*/
+      $.ajax('/api/match', {
+            type: 'POST',
+            data: newMatch
+          }).then(function() {
+              console.log('new match');
+          });
+    } 
   })
+})
 
 
   //Sum up the scores on the scoreboard
