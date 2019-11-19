@@ -1,7 +1,13 @@
 $(document).ready(() => {
+  let home_team_id,
+    away_team_id,
+    inning = 0,
+    mainPage = $("body");
+  //mainPage.css("background-image", backgrounds[0] + "top center no-repeat");
+
   async function startMatch(inning) {
     await atBats(); //1st inning
-    // await atBats(); //2nd inning
+    await atBats(); //2nd inning
     // await atBats(); //3rd inning
     // await atBats(); //4th inning
     // await atBats(); //5th inning
@@ -9,19 +15,20 @@ $(document).ready(() => {
     // await atBats(); //7th inning
     // await atBats(); //8th inning
     // await atBats(); //9th inning
+    return;
   }
 
   function atBats() {
     inning += 1;
     mainPage.css("background-image", backgrounds[0]);
-
-    let visOuts = 0,
+    let 
+      visOuts = 0,
       visHits = 0,
       visScoreInning = 0,
       homeOuts = 0,
       homeHits = 0,
-      homeScoreInning = 0;
-    isTop = true;
+      homeScoreInning = 0,
+      isTop = true;
 
     return new Promise((res, rej) => {
       console.log(`inning: ${inning}`);
@@ -37,7 +44,15 @@ $(document).ready(() => {
           console.log(`Player ID: ${player_id} updated`);
         });
 
-        if (!isTop) {
+        if (isTop) {
+          visOuts++;
+          console.log(`visouts: ${visOuts}`);
+          if (visOuts >= 3) {
+            $(`#visScore${inning}`).unbind();
+            isTop = false;
+            mainPage.css("background-image", backgrounds[0]);
+          }
+        } else if (!isTop) {
           homeOuts++;
           console.log(`homeouts: ${homeOuts}`);
           if (homeOuts >= 3) {
@@ -47,20 +62,13 @@ $(document).ready(() => {
             console.log("resolving promise");
             res();
           }
-        } else if (isTop) {
-          visOuts++;
-          console.log(`visouts: ${visOuts}`);
-          if (visOuts >= 3) {
-            $(`#visScore${inning}`).unbind();
-            isTop = false;
-            mainPage.css("background-image", backgrounds[0]);
-          }
         }
       });
 
       //On-click hit
       $(".hit-btn").on("click", function() {
         let player_id = $(this).parent()[0].dataset["player_id"];
+        mainPage.css("background-image", backgrounds[0]);
 
         $("#batter-card").hide();
         // Post hit to season_bats_stats
@@ -72,13 +80,9 @@ $(document).ready(() => {
         });
 
         if (isTop) {
-          visHits++;
-          console.log(`hits: ${visHits}`);
+          visHits += 1;
+          console.log(`visHits: ${visHits}`);
           switch (true) {
-            case visHits === 0:
-              console.log("empty bags");
-              mainPage.css("background-image", backgrounds[visHits]);
-              break;
             case visHits === 1:
               console.log("one on");
               mainPage.css("background-image", backgrounds[visHits]);
@@ -102,9 +106,10 @@ $(document).ready(() => {
               console.log(`vis score: ${visScoreInning}`);
             }
           }
-        } else {
+        } else if(!isTop) {
           homeHits++;
-          console.log(`hits: ${homeHits}`);
+          mainPage.css("background-image", backgrounds[0]);
+          console.log(`homeHits: ${homeHits}`);
 
           switch (true) {
             case homeHits === 1:
@@ -134,12 +139,6 @@ $(document).ready(() => {
       });
     });
   }
-
-  let home_team_id,
-    away_team_id,
-    inning = 0,
-    mainPage = $("body");
-  //mainPage.css("background-image", backgrounds[0] + "top center no-repeat");
 
   const backgrounds = new Array( //array of background images
     "url(../images/diamondEmpty.jpg)",
