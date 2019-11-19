@@ -299,7 +299,7 @@ $(document).ready(() => {
       let dataSet = $(this)[0].dataset;
       $("#batter-card").show();
       $("#batter-card-name").text(dataSet["name"]);
-      $("#batter-card-bat_avg").text(dataSet["bat_avg"]);
+      $("#batter-card-bat_avg").text(`Batting Average: ${dataSet["bat_avg"]}`);
       $("#batter-card-roster").text(dataSet["ros"]);
       $("#batter-card-pos").text(`Position: ${dataSet["pos"]}`);
       $("#batter-card-hand").text(`Bats: ${dataSet["hand"]}`);
