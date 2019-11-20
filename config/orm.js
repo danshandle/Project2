@@ -51,6 +51,7 @@ const orm = {
     });
   },
 
+
  
 
   selectWhere: (table, condition, cb) => {
@@ -85,6 +86,7 @@ const orm = {
       cb(res);
     })
   },
+
   // selectWhere: (table, condition, cb) => {
   //   let query = `SELECT * FROM ${table} Where player_id = ${condition};`;
   //   connection.query(query, function(err, res) {
@@ -103,6 +105,7 @@ const orm = {
   //      cb(res)
   //   })
   // },
+
    updateOuts:(table, condition, cb) => {
      let query = `UPDATE ${table} SET at_bats = at_bats +1 Where player_id = ${condition}`
      connection.query(query, function(err, res) {
@@ -111,7 +114,8 @@ const orm = {
        }
        cb(res)
      })
-   },
+   }
+
 
 
   // create: (table, homeTeam, awayTeam, loc, result, cb) => {
