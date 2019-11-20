@@ -3,15 +3,32 @@ const express = require("express"),
 
 const router = express.Router();
 
-router.route("/").get(function(req, res) {
-  baseball.allTeams(function(data) {
-    let teamsObj = {
-      teams: data
-    };
-    console.log(teamsObj);
-    res.render("index", teamsObj);
+router.route("/")
+  .get(function(req, res) {
+    baseball.allTeams(function(data) {
+      let teamsObj = {
+        teams: data
+      };
+      console.log(teamsObj);
+      res.render("index", teamsObj);
+    });
   });
-});
+  
+  router.route('/api/match')
+    .post(function(req, res) {
+      console.log(res)
+      let 
+        home_team_id = req.body.home,
+        away_team_id = req.body.away,
+        homeScore = req.body.homeScore,
+        awayScore = req.body.awayScore;
+        
+
+      baseball.createMatch(home_team_id, away_team_id, homeScore, awayScore, function(data) {
+        console.log(data)
+      })
+    })
+   
 
 router.route("/api/home/team/:id").get(function(req, res) {
   let team_id = req.params.id;
@@ -38,33 +55,20 @@ router.route("/api/away/team/:id").get(function(req, res) {
   });
 });
 
-router.route("/api/matches").post(function(req, res) {
-  baseball.createMatch(home, away, loc, function(result) {
-    
-    res.json({ id: result.insertId });
-  });
-});
 
-router.route("/batter/:id").get(function(req, res) {
-  baseball.selectBatter(req.params.id, function(data) {
-    let playersObj = {
-      players: data
-    };
-    console.log(playersObj);
-    res.render("./partials/batter/batter", playersObj);
 
-  });
-});
 
-router.route("/batter/hits/:id").get(function(req, res) {
-  baseball.selectHits(req.params.id, function(data) {
-    console.log(data)
-  })
-})
+ router.route("/batter/hits/:id").post(function(req, res) {
+   baseball.selectHits(req.params.id, function(data) {
+     console.log(data)
+   })
+ })
 
-router.route("/batter/outs/:id").get(function(req, res) {
-  baseball.selectOuts(req.params.id, function(data) {
-    console.log(data)
-  })
-})
+ router.route("/batter/outs/:id").post(function(req, res) {
+   baseball.selectOuts(req.params.id, function(data) {
+     console.log(data)
+   })
+ })
+
+
 module.exports = router;

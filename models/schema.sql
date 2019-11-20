@@ -25,13 +25,13 @@ CREATE TABLE `season_bat_stats` (
 );
 CREATE TABLE `matches` (
   `match_id` int NOT NULL AUTO_INCREMENT,
-  `home` int,
-  `away` int,
-  `location` varchar(50),
-  `date` datetime,
-  `result` char(1),
+  `home_id` int,
+  `away_id` int,
+  `home_score` int,
+  `away_score` int,
+  
   PRIMARY KEY (`match_id`),
-  KEY `FK` (`home`, `away`)
+  KEY `FK` (`home_id`, `away_id`)
 );
 CREATE TABLE `at_bats` (
   `at_bats_id` int NOT NULL AUTO_INCREMENT,
