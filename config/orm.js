@@ -4,7 +4,6 @@ const orm = {
   selectAll: (table, cb) => {
     let query = `SELECT * FROM ${table};`;
 
-
     connection.query(query, function(err, res) {
       if (err) {
         throw err;
@@ -15,7 +14,6 @@ const orm = {
   },
 
   selectOneTeam: (table, team_id, cb) => {
-
     let query = `SELECT 
                   p.player_id, 
                   player_name, 
@@ -29,7 +27,6 @@ const orm = {
                   ON p.player_id = s.player_id 
                   WHERE team_id = '${team_id}';`;
 
-
     connection.query(query, function(err, res) {
       if (err) {
         throw err;
@@ -38,7 +35,7 @@ const orm = {
       cb(res);
     });
   },
-  
+
   selectOne: (table, team_id, cb) => {
     let query = `SELECT * From ${table} WHERE team_id = '${team_id}'`;
 
@@ -51,9 +48,6 @@ const orm = {
     });
   },
 
-
- 
-
   selectWhere: (table, condition, cb) => {
     let query = `SELECT * FROM ${table} Where player_id = ${condition};`;
     connection.query(query, function(err, res) {
@@ -61,20 +55,26 @@ const orm = {
         throw err;
       }
       cb(res);
-    })
+    });
   },
   updateHits: (table, condition, cb) => {
-    let query = `UPDATE ${table} SET hits = hits +1, at_bats = at_bats +1 Where player_id = ${condition};`
+    let query = `UPDATE ${table} SET hits = hits +1, at_bats = at_bats +1 Where player_id = ${condition};`;
     connection.query(query, function(err, res) {
       if (err) {
         throw err;
       }
-       cb(res)
-    })
+      cb(res);
+    });
   },
 
-  /*Create Matches*/ //need to location
-  create: (table, homeTeam, awayTeam, homeScore, awayScore, cb) => {
+  /*Create Matches*/ create: (
+    table,
+    homeTeam,
+    awayTeam,
+    homeScore,
+    awayScore,
+    cb
+  ) => {
     let query = `INSERT INTO ${table} (home_id, away_id, home_score, away_score) `;
     query += `VALUES (${homeTeam}, ${awayTeam}, ${homeScore}, ${awayScore});`;
 
@@ -84,58 +84,18 @@ const orm = {
       }
 
       cb(res);
-    })
+    });
   },
 
-  // selectWhere: (table, condition, cb) => {
-  //   let query = `SELECT * FROM ${table} Where player_id = ${condition};`;
-  //   connection.query(query, function(err, res) {
-  //     if (err) {
-  //       throw err;
-  //     }
-  //     cb(res);
-  //   })
-  // },
-  // updateHits: (table, condition, cb) => {
-  //   let query = `UPDATE ${table} SET hits = hits +1, at_bats = at_bats +1 Where player_id = ${condition};`
-  //   connection.query(query, function(err, res) {
-  //     if (err) {
-  //       throw err;
-  //     }
-  //      cb(res)
-  //   })
-  // },
-
-   updateOuts:(table, condition, cb) => {
-     let query = `UPDATE ${table} SET at_bats = at_bats +1 Where player_id = ${condition}`
-     connection.query(query, function(err, res) {
-       if (err) {
-         throw err;
-       }
-       cb(res)
-     })
-   }
-
-
-
-  // create: (table, homeTeam, awayTeam, loc, result, cb) => {
-  //   let query = `INSERT INTO ${table} (home, away, location, result) `;
-  //   query += `VALUES (${homeTeam}, ${awayTeam},${loc}, ${result} );`;
-
-  //   connection.query(query, function(err, res) {
-  //     if (err) {
-  //       throw err;
-  //     }
-
-  //     cb(res);
-  //   })
-  // },
-
-
-     
-  
-  
-
+  updateOuts: (table, condition, cb) => {
+    let query = `UPDATE ${table} SET at_bats = at_bats +1 Where player_id = ${condition}`;
+    connection.query(query, function(err, res) {
+      if (err) {
+        throw err;
+      }
+      cb(res);
+    });
+  }
 };
 
 module.exports = orm;
