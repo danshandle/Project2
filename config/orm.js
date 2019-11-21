@@ -87,24 +87,6 @@ const orm = {
     })
   },
 
-  // selectWhere: (table, condition, cb) => {
-  //   let query = `SELECT * FROM ${table} Where player_id = ${condition};`;
-  //   connection.query(query, function(err, res) {
-  //     if (err) {
-  //       throw err;
-  //     }
-  //     cb(res);
-  //   })
-  // },
-  // updateHits: (table, condition, cb) => {
-  //   let query = `UPDATE ${table} SET hits = hits +1, at_bats = at_bats +1 Where player_id = ${condition};`
-  //   connection.query(query, function(err, res) {
-  //     if (err) {
-  //       throw err;
-  //     }
-  //      cb(res)
-  //   })
-  // },
 
    updateOuts:(table, condition, cb) => {
      let query = `UPDATE ${table} SET at_bats = at_bats +1 Where player_id = ${condition}`
@@ -115,27 +97,6 @@ const orm = {
        cb(res)
      })
    }
-
-
-
-  // create: (table, homeTeam, awayTeam, loc, result, cb) => {
-  //   let query = `INSERT INTO ${table} (home, away, location, result) `;
-  //   query += `VALUES (${homeTeam}, ${awayTeam},${loc}, ${result} );`;
-
-  //   connection.query(query, function(err, res) {
-  //     if (err) {
-  //       throw err;
-  //     }
-
-  //     cb(res);
-  //   })
-  // },
-
-
-     
-  
-  
-
 };
 
 module.exports = orm;
