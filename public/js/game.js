@@ -1,6 +1,4 @@
 $(document).ready(() => {
-  
-  
   let home_team_id,
     away_team_id,
     inning = 0,
@@ -10,22 +8,20 @@ $(document).ready(() => {
   async function startMatch(inning) {
     await atBats(); //1st inning
     await atBats(); //2nd inning
-    // await atBats(); //3rd inning
-    // await atBats(); //4th inning
-    // await atBats(); //5th inning
-    // await atBats(); //6th inning
-    // await atBats(); //7th inning
-    // await atBats(); //8th inning
-    // await atBats(); //9th inning
+    await atBats(); //3rd inning
+    await atBats(); //4th inning
+    await atBats(); //5th inning
+    await atBats(); //6th inning
+    await atBats(); //7th inning
+    await atBats(); //8th inning
+    await atBats(); //9th inning
     return;
   }
-
 
   function atBats() {
     inning += 1;
     mainPage.css("background-image", backgrounds[0]);
-    let 
-      visOuts = 0,
+    let visOuts = 0,
       visHits = 0,
       visScoreInning = 0,
       homeOuts = 0,
@@ -34,7 +30,6 @@ $(document).ready(() => {
       isTop = true;
 
     return new Promise((res, rej) => {
-      console.log(`inning: ${inning}`);
       // On-click Out
       $(".out-btn").on("click", function() {
         let player_id = $(this).parent()[0].dataset["player_id"];
@@ -49,7 +44,7 @@ $(document).ready(() => {
 
         if (isTop) {
           visOuts++;
-          console.log(`visouts: ${visOuts}`);
+
           if (visOuts >= 3) {
             $(`#visScore${inning}`).unbind();
             isTop = false;
@@ -57,12 +52,12 @@ $(document).ready(() => {
           }
         } else if (!isTop) {
           homeOuts++;
-          console.log(`homeouts: ${homeOuts}`);
+
           if (homeOuts >= 3) {
             $(`#homeScore${inning}`).unbind();
             isTop = true;
             mainPage.css("background-image", backgrounds[0]);
-            console.log("resolving promise");
+
             res();
           }
         }
@@ -84,14 +79,12 @@ $(document).ready(() => {
 
         if (isTop) {
           visHits += 1;
-          console.log(`visHits: ${visHits}`);
+
           switch (true) {
             case visHits === 1:
-              console.log("one on");
               mainPage.css("background-image", backgrounds[visHits]);
               break;
             case visHits === 2:
-              console.log("two one");
               mainPage.css("background-image", backgrounds[visHits]);
               break;
             case visHits === 3:
@@ -101,27 +94,22 @@ $(document).ready(() => {
               mainPage.css("background-image", backgrounds[3]);
           }
 
-
           if (visOuts < 3) {
             if (visHits >= 4) {
               visScoreInning += 1;
               $(`#visScore${inning}`).val(visScoreInning);
               //gif
-              console.log(`vis score: ${visScoreInning}`);
             }
           }
-        } else if(!isTop) {
+        } else if (!isTop) {
           homeHits++;
           mainPage.css("background-image", backgrounds[0]);
-          console.log(`homeHits: ${homeHits}`);
 
           switch (true) {
             case homeHits === 1:
-              console.log("one on");
               mainPage.css("background-image", backgrounds[homeHits]);
               break;
             case homeHits === 2:
-              console.log("two one");
               mainPage.css("background-image", backgrounds[homeHits]);
               break;
             case homeHits === 3:
@@ -136,7 +124,6 @@ $(document).ready(() => {
               homeScoreInning += 1;
               $(`#homeScore${inning}`).val(homeScoreInning);
               //gif
-              console.log(`home score: ${homeScoreInning}`);
             }
           }
         }
@@ -263,29 +250,27 @@ $(document).ready(() => {
   //start match
   $("#start-match").on("click", function() {
     if ($(this).text() === "Start Match") {
-      console.log("game started");
-
       //Resquest gif
-      let url = `https://api.giphy.com/v1/gifs/search?q=baseball&api_key=efON0kuaf67AQ7xZbpJnftqbH8mQgHwh$&limit=10`;
+      let url = `https://api.giphy.com/v1/gifs/search?q=baseball&api_key=${
+        process.env.GIF_KEY
+      }$&limit=10`;
       $.ajax({
         url,
-        method: 'GET'
-      }).then(function(response){
-        
+        method: "GET"
+      }).then(function(response) {
         let result = response.data;
         console.log(result);
 
         // for(let i = 0; i < result.length; i++){
         //   let imgAnimate = result[i].images['original']['url'];
         //   $('<gif-jumbo').attr({
-        //     
+        //
         //     src: animate,
         //   });
-       
-        // }
-      }) 
 
-      
+        // }
+      });
+
       startMatch(inning).then(function() {
         console.log("Match OVER");
       });
@@ -294,8 +279,6 @@ $(document).ready(() => {
         .attr("disable", true)
         .text("End Game");
     } else {
-      console.log("game ended");
-
       var newMatch = {
         home: home_team_id,
         away: away_team_id,
@@ -308,7 +291,7 @@ $(document).ready(() => {
         type: "POST",
         data: newMatch
       }).then(function() {
-        console.log("new match");
+        console.log("New Match created");
       });
 
       $(this)
@@ -320,7 +303,6 @@ $(document).ready(() => {
   // Select Batter
   $(document).on("click", ".player-at-bat-btn", function(e) {
     let isAtBat = e.target.getAttribute("disable");
-    console.log(isAtBat);
     if (isAtBat === "false") {
       let dataSet = $(this)[0].dataset;
       $("#batter-card").show();
