@@ -6,7 +6,7 @@
     "username": "g1eynw0x5rqbk6mi",
     "password": "fzfawix3jigql9se",
     "database": "rjvx6f4svp31ufm1",
-    "host": "lolyz0ok3stvj6f0.cbetxkdyhwsb.us-east-1.rds.amazonaws.com	"
+    "host": "lolyz0ok3stvj6f0.cbetxkdyhwsb.us-east-1.rds.amazonaws.com"
   },
   "test": {
     "use_env_variable": "JAWSDB_URL",
@@ -14,7 +14,7 @@
     "username": "g1eynw0x5rqbk6mi",
     "password": "fzfawix3jigql9se",
     "database": "rjvx6f4svp31ufm1",
-    "host": "lolyz0ok3stvj6f0.cbetxkdyhwsb.us-east-1.rds.amazonaws.com	"
+    "host": "lolyz0ok3stvj6f0.cbetxkdyhwsb.us-east-1.rds.amazonaws.com"
   },
   "production": {
     "use_env_variable": "JAWSDB_URL",
@@ -22,7 +22,7 @@
     "username": "g1eynw0x5rqbk6mi",
     "password": "fzfawix3jigql9se",
     "database": "rjvx6f4svp31ufm1",
-    "host": "lolyz0ok3stvj6f0.cbetxkdyhwsb.us-east-1.rds.amazonaws.com	lolyz0ok3stvj6f0.cbetxkdyhwsb.us-east-1.rds.amazonaws.com	"
+    "host": "lolyz0ok3stvj6f0.cbetxkdyhwsb.us-east-1.rds.amazonaws.com"
    
   }
 }
