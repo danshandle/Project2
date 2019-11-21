@@ -14,10 +14,6 @@ if (process.env.JAWSDB_URL) {
   database: "baseballdb"
 })
 
-}
-
-;
-
 };
 
 connection.connect(function (err) {
