@@ -10,13 +10,13 @@ $(document).ready(() => {
   async function startMatch(inning) {
     await atBats(); //1st inning
     await atBats(); //2nd inning
-    // await atBats(); //3rd inning
-    // await atBats(); //4th inning
-    // await atBats(); //5th inning
-    // await atBats(); //6th inning
-    // await atBats(); //7th inning
-    // await atBats(); //8th inning
-    // await atBats(); //9th inning
+    await atBats(); //3rd inning
+    await atBats(); //4th inning
+    await atBats(); //5th inning
+    await atBats(); //6th inning
+    await atBats(); //7th inning
+    await atBats(); //8th inning
+    await atBats(); //9th inning
     return;
   }
 
@@ -253,9 +253,11 @@ $(document).ready(() => {
   $("#start-match").on("click", function() {
     if ($(this).text() === "Start Match") {
 
+
       startMatch(inning).then(function() { //async function
         console.log("Match OVER");
       });
+
       
       //Resquest gif
       // let url = `https://api.giphy.com/v1/gifs/search?q=baseball&api_key=${process.env.GIF_KEY}$&limit=10`;

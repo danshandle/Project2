@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS baseballdb;
-CREATE DATABASE baseballdb;
-USE baseballdb;
+DROP DATABASE IF EXISTS ks41eh1eo6bajxow;
+CREATE DATABASE ks41eh1eo6bajxow;
+USE ks41eh1eo6bajxow;
 
 CREATE TABLE `players` (
   `player_id` int NOT NULL AUTO_INCREMENT,
