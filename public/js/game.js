@@ -2,7 +2,9 @@ $(document).ready(() => {
   let home_team_id,
     away_team_id,
     inning = 0,
-    mainPage = $("body");
+    mainPage = $("body"),
+    visTotalSum,
+    homeTotalSum;
   //mainPage.css("background-image", backgrounds[0] + "top center no-repeat");
 
   async function startMatch(inning) {
