@@ -2,7 +2,9 @@ $(document).ready(() => {
   let home_team_id,
     away_team_id,
     inning = 0,
-    mainPage = $("body");
+    mainPage = $("body"),
+    visTotalSum,
+    homeTotalSum;
   //mainPage.css("background-image", backgrounds[0] + "top center no-repeat");
 
   async function startMatch(inning) {
@@ -250,6 +252,16 @@ $(document).ready(() => {
   //start match
   $("#start-match").on("click", function() {
     if ($(this).text() === "Start Match") {
+
+
+
+
+      startMatch(inning).then(function() { //async function
+        console.log("Match OVER");
+      });
+
+      
+
       //Resquest gif
       // let url = `https://api.giphy.com/v1/gifs/search?q=baseball&api_key=${
       //   process.env.GIF_KEY
@@ -269,22 +281,25 @@ $(document).ready(() => {
         //   });
 
         // }
+
       // });
 
-      startMatch(inning).then(function() {
-        console.log("Match OVER");
-      });
 
-      $(this)
+      // });
+
+
+         $(this)
         .attr("disable", true)
         .text("End Game");
-    } else {
+      }
+
+     else {
       var newMatch = {
         home: home_team_id,
         away: away_team_id,
         homeScore: Number.parseInt($("#resultHome").text()),
         awayScore: Number.parseInt($("#resultVis").text())
-      };
+      }
 
       /*Post Match*/
       $.ajax("/api/match", {
@@ -328,4 +343,6 @@ $(document).ready(() => {
     homeTotalSum += currentValue;
     $("#resultHome").text(homeTotalSum);
   });
+
+
 });
