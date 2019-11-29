@@ -23,34 +23,45 @@
           </thead>
           <tbody>
             <tr>
-              <td id=Vistor></td>
+              <td>Away</td>
+              
 
-              <td><form><input type="number" class="visScore" id="visScore1"></form></td>
-              <td><form><input type="number" class="visScore" id="visScore2"></form></td>
-              <td><form><input type="number" class="visScore" id="visScore3"></form></td>
-              <td><form><input type="number" class="visScore" id="visScore4"></form></td>
-              <td><form><input type="number" class="visScore" id="visScore5"></form></td>
-              <td><form><input type="number" class="visScore" id="visScore6"></form></td>
-              <td><form><input type="number" class="visScore" id="visScore7"></form></td>
-              <td><form><input type="number" class="visScore" id="visScore8"></form></td>
-              <td><form><input type="number" class="visScore" id="visScore9"></form></td>
+              <td><span class="visScore" id="visScore1">0</span></td>
+              <td><span class="visScore" id="visScore2">0</span></td>
+              <td><span class="visScore" id="visScore3">0</span></td>
+              <td><span class="visScore" id="visScore4">0</span></td>
+              <td><span class="visScore" id="visScore5">0</span></td>
+              <td><span class="visScore" id="visScore6">0</span></td>
+              <td><span class="visScore" id="visScore7">0</span></td>
+              <td><span class="visScore" id="visScore8">0</span></td>
+              <td><span class="visScore" id="visScore9">0</span></td>
+              
 
-              <td><h3 id="resultVis"></h3></td>
+              <td><span id="resultVis">0</span></td>
+
             </tr>
             <tr>
               <td>Home</td>
 
-              <td><form><input type="number" class="homeScore" id="homeScore1"></form></td>
-              <td><form><input type="number" class="homeScore" id="homeScore2"></form></td>
-              <td><form><input type="number" class="homeScore" id="homeScore3"></form></td>
-              <td><form><input type="number" class="homeScore" id="homeScore4"></form></td>
-              <td><form><input type="number" class="homeScore" id="homeScore5"></form></td>
-              <td><form><input type="number" class="homeScore" id="homeScore6"></form></td>
-              <td><form><input type="number" class="homeScore" id="homeScore7"></form></td>
-              <td><form><input type="number" class="homeScore" id="homeScore8"></form></td>
-              <td><form><input type="number" class="homeScore" id="homeScore9"></form></td>
+              <td><span class="homeScore" id="homeScore1">0</span></td>
+              <td><span class="homeScore" id="homeScore2">0</span></td>
+              <td><span class="homeScore" id="homeScore3">0</span></td>
+              <td><span class="homeScore" id="homeScore4">0</span></td>
+              <td><span class="homeScore" id="homeScore5">0</span></td>
+              <td><span class="homeScore" id="homeScore6">0</span></td>
+              <td><span class="homeScore" id="homeScore7">0</span></td>
+              <td><span class="homeScore" id="homeScore8">0</span></td>
+              <td><span class="homeScore" id="homeScore9">0</span></td>
+              
+    
+              <td><span id="resultHome">0</span></td>
 
-              <td><h3 id="resultHome"></h3></td>
+            </tr>
+            <tr>
+              <td id="inning-indicator" colspan="9">Top</td>
+              <td>Outs:</td>
+              <td id="outs-indicator">0</td>
+              
             </tr>
           </tbody>
         </table>
@@ -75,8 +86,6 @@
     <div class="col-md-3">
 
       <h1>Home Team</h1>
-      
-      
 
       <div class="dropdown" id="home-team-drop">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="home-team-roster" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
