@@ -3,8 +3,8 @@ $(document).ready(() => {
     away_team_id,
     inning = 0,
     mainPage = $("body"),
-    visTotalSum,
-    homeTotalSum;
+    visTotalSum = 0,
+    homeTotalSum = 0;
   //mainPage.css("background-image", backgrounds[0] + "top center no-repeat");
 
   async function startMatch(inning) {
@@ -23,6 +23,12 @@ $(document).ready(() => {
   function atBats() {
     inning += 1;
     mainPage.css("background-image", backgrounds[0]);
+
+    $(`#visScore${inning}`).attr({
+      'class' : 'current-inning'
+    })
+    
+    
     let visOuts = 0,
       visHits = 0,
       visScoreInning = 0,
@@ -31,7 +37,11 @@ $(document).ready(() => {
       homeScoreInning = 0,
       isTop = true;
 
+      
+      
+
     return new Promise((res, rej) => {
+      
       // On-click Out
       $(".out-btn").on("click", function() {
         let player_id = $(this).parent()[0].dataset["player_id"];
@@ -46,20 +56,35 @@ $(document).ready(() => {
 
         if (isTop) {
           visOuts++;
+          $('#outs-indicator').text(visOuts.toString())
 
           if (visOuts >= 3) {
             $(`#visScore${inning}`).unbind();
-            isTop = false;
+            $('#outs-indicator').text(0);
+
+            $(`#visScore${inning}`).removeClass('current-inning');
+            $(`#homeScore${inning}`).attr({
+              'class' : 'current-inning'
+            })
+           
             mainPage.css("background-image", backgrounds[0]);
+            isTop = false;
+
+            
           }
         } else if (!isTop) {
           homeOuts++;
+          $('#outs-indicator').text(homeOuts.toString())
+
 
           if (homeOuts >= 3) {
             $(`#homeScore${inning}`).unbind();
-            isTop = true;
-            mainPage.css("background-image", backgrounds[0]);
+            $('#outs-indicator').text(0);
 
+            $(`#homeScore${inning}`).removeClass('current-inning');
+            
+            mainPage.css("background-image", backgrounds[0]);
+            isTop = true;
             res();
           }
         }
@@ -99,7 +124,10 @@ $(document).ready(() => {
           if (visOuts < 3) {
             if (visHits >= 4) {
               visScoreInning += 1;
-              $(`#visScore${inning}`).val(visScoreInning);
+              $(`#visScore${inning}`).text(visScoreInning);
+
+              visTotalSum += 1;
+              $("#resultVis").text(visTotalSum.toString());
               //gif
             }
           }
@@ -124,13 +152,17 @@ $(document).ready(() => {
           if (homeOuts < 3) {
             if (homeHits >= 4) {
               homeScoreInning += 1;
-              $(`#homeScore${inning}`).val(homeScoreInning);
+              $(`#homeScore${inning}`).text(homeScoreInning);
+
+              homeTotalSum += 1;
+              $("#resultHome").text(homeTotalSum.toString());
               //gif
             }
           }
         }
       });
     });
+    
   }
 
   const backgrounds = new Array( //array of background images
@@ -252,15 +284,10 @@ $(document).ready(() => {
   //start match
   $("#start-match").on("click", function() {
     if ($(this).text() === "Start Match") {
-
-
-
-
-      startMatch(inning).then(function() { //async function
+      startMatch(inning).then(function() {
+        //async function
         console.log("Match OVER");
       });
-
-      
 
       //Resquest gif
       // let url = `https://api.giphy.com/v1/gifs/search?q=baseball&api_key=${
@@ -273,33 +300,29 @@ $(document).ready(() => {
       //   let result = response.data;
       //   console.log(result);
 
-        // for(let i = 0; i < result.length; i++){
-        //   let imgAnimate = result[i].images['original']['url'];
-        //   $('<gif-jumbo').attr({
-        //
-        //     src: animate,
-        //   });
+      // for(let i = 0; i < result.length; i++){
+      //   let imgAnimate = result[i].images['original']['url'];
+      //   $('<gif-jumbo').attr({
+      //
+      //     src: animate,
+      //   });
 
-        // }
-
-      // });
-
+      // }
 
       // });
 
+      // });
 
-         $(this)
+      $(this)
         .attr("disable", true)
         .text("End Game");
-      }
-
-     else {
+    } else {
       var newMatch = {
         home: home_team_id,
         away: away_team_id,
         homeScore: Number.parseInt($("#resultHome").text()),
         awayScore: Number.parseInt($("#resultVis").text())
-      }
+      };
 
       /*Post Match*/
       $.ajax("/api/match", {
@@ -343,6 +366,4 @@ $(document).ready(() => {
     homeTotalSum += currentValue;
     $("#resultHome").text(homeTotalSum);
   });
-
-
 });
