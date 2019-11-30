@@ -5,9 +5,9 @@ $(document).ready(() => {
     mainPage = $("body"),
     visTotalSum = 0,
     homeTotalSum = 0;
-  //mainPage.css("background-image", backgrounds[0] + "top center no-repeat");
+  
 
-  async function startMatch(inning) {
+  async function startMatch() {
     await atBats(); //1st inning
     await atBats(); //2nd inning
     await atBats(); //3rd inning
@@ -22,7 +22,7 @@ $(document).ready(() => {
 
   function atBats() {
     inning += 1;
-    mainPage.css("background-image", backgrounds[0]);
+    mainPage.css("background-image", 'url(../images/diamondEmpty.jpg)');
 
     $(`#visScore${inning}`).attr({
       'class' : 'current-inning'
@@ -67,10 +67,9 @@ $(document).ready(() => {
               'class' : 'current-inning'
             })
            
-            mainPage.css("background-image", backgrounds[0]);
+            mainPage.css("background-image", 'url(../images/diamondEmpty.jpg)');
             isTop = false;
 
-            
           }
         } else if (!isTop) {
           homeOuts++;
@@ -83,7 +82,7 @@ $(document).ready(() => {
 
             $(`#homeScore${inning}`).removeClass('current-inning');
             
-            mainPage.css("background-image", backgrounds[0]);
+            mainPage.css("background-image", 'url(../images/diamondEmpty.jpg)');
             isTop = true;
             res();
           }
@@ -93,7 +92,7 @@ $(document).ready(() => {
       //On-click hit
       $(".hit-btn").on("click", function() {
         let player_id = $(this).parent()[0].dataset["player_id"];
-        mainPage.css("background-image", backgrounds[0]);
+        mainPage.css("background-image", 'url(../images/diamondEmpty.jpg)');
 
         $("#batter-card").hide();
         // Post hit to season_bats_stats
@@ -107,19 +106,7 @@ $(document).ready(() => {
         if (isTop) {
           visHits += 1;
 
-          switch (true) {
-            case visHits === 1:
-              mainPage.css("background-image", backgrounds[visHits]);
-              break;
-            case visHits === 2:
-              mainPage.css("background-image", backgrounds[visHits]);
-              break;
-            case visHits === 3:
-              mainPage.css("background-image", backgrounds[visHits]);
-              break;
-            default:
-              mainPage.css("background-image", backgrounds[3]);
-          }
+          baseRunning.show(visHits);
 
           if (visOuts < 3) {
             if (visHits >= 4) {
@@ -133,22 +120,11 @@ $(document).ready(() => {
           }
         } else if (!isTop) {
           homeHits++;
-          mainPage.css("background-image", backgrounds[0]);
+          mainPage.css("background-image", 'url(../images/diamondEmpty.jpg)');
+          
+          baseRunning.show(homeHits);
 
-          switch (true) {
-            case homeHits === 1:
-              mainPage.css("background-image", backgrounds[homeHits]);
-              break;
-            case homeHits === 2:
-              mainPage.css("background-image", backgrounds[homeHits]);
-              break;
-            case homeHits === 3:
-              mainPage.css("background-image", backgrounds[homeHits]);
-              break;
-            default:
-              mainPage.css("background-image", backgrounds[3]);
-          }
-
+        
           if (homeOuts < 3) {
             if (homeHits >= 4) {
               homeScoreInning += 1;
@@ -165,12 +141,33 @@ $(document).ready(() => {
     
   }
 
-  const backgrounds = new Array( //array of background images
-    "url(../images/diamondEmpty.jpg)",
-    "url(../images/diamond1stBase.jpg)",
-    "url(../images/diamond2ndBase.jpg)",
-    "url(../images/diamond3rdBase.jpg)"
-  );
+  
+
+  const baseRunning = {
+    emptyBags : 'url(../images/diamondEmpty.jpg)',
+    runner1: 'url(../images/diamond1stBase.jpg)',
+    runner2: 'url(../images/diamond2ndBase.jpg)',
+    runner3: 'url(../images/diamond3rdBase.jpg)',
+
+    show: function(h) {
+      switch (h) {
+        case 0:
+          mainPage.css("background-image", this.emptyBags);
+          break;
+        case 1:
+          mainPage.css("background-image", this.runner1);
+          break;
+        case 2:
+          mainPage.css("background-image", this.runner2);
+          break;
+        case 3:
+        default:
+          mainPage.css("background-image", this.runner3);
+          break; 
+      }
+    }
+
+  }
 
   $("#batter-card").hide();
   // Select Team for home
