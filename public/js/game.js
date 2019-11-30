@@ -2,10 +2,11 @@ $(document).ready(() => {
   let home_team_id,
     away_team_id,
     inning = 0,
-    mainPage = $("body"),
+
     visTotalSum = 0,
     homeTotalSum = 0;
   
+
 
   async function startMatch() {
     await atBats(); //1st inning
@@ -281,8 +282,10 @@ $(document).ready(() => {
   //start match
   $("#start-match").on("click", function() {
     if ($(this).text() === "Start Match") {
-      startMatch(inning).then(function() {
-        //async function
+
+      //async function
+      startMatch().then(function() {
+        
         console.log("Match OVER");
       });
 
@@ -306,20 +309,24 @@ $(document).ready(() => {
 
       // }
 
-      // });
 
       // });
 
-      $(this)
+      // });
+
+
+         $(this)
         .attr("disable", true)
         .text("End Game");
-    } else {
+      }
+
+     else {
       var newMatch = {
         home: home_team_id,
         away: away_team_id,
         homeScore: Number.parseInt($("#resultHome").text()),
         awayScore: Number.parseInt($("#resultVis").text())
-      };
+      }
 
       /*Post Match*/
       $.ajax("/api/match", {
@@ -363,4 +370,6 @@ $(document).ready(() => {
     homeTotalSum += currentValue;
     $("#resultHome").text(homeTotalSum);
   });
+
+
 });
